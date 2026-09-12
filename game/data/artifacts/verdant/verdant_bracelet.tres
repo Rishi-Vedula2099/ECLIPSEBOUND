@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "verdant_bracelet"
+artifact_name = "Thornweave Bangle"
+slot = "Bracelet"
+rarity = "Rare"
+set_id = "Verdant Guardian"
+bonus_vit = 3
+bonus_str = 3
+bonus_arc = 1
+bonus_def = 2
+bonus_agi = 2
+bonus_crt = 1
+bonus_res = 2
+bonus_lck = 1
+description = "Entangled thorn bracelet humming with vitality."

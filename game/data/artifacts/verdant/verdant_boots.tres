@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "verdant_boots"
+artifact_name = "Verdant Striders"
+slot = "Boots"
+rarity = "Rare"
+set_id = "Verdant Guardian"
+bonus_vit = 4
+bonus_str = 0
+bonus_arc = 0
+bonus_def = 3
+bonus_agi = 5
+bonus_crt = 0
+bonus_res = 2
+bonus_lck = 1
+description = "Lightweight boots woven from elder vine strands."

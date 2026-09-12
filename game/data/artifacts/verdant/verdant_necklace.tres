@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "verdant_necklace"
+artifact_name = "Amulet of the March"
+slot = "Necklace"
+rarity = "Epic"
+set_id = "Verdant Guardian"
+bonus_vit = 5
+bonus_str = 2
+bonus_arc = 4
+bonus_def = 2
+bonus_agi = 1
+bonus_crt = 1
+bonus_res = 4
+bonus_lck = 2
+description = "Glowing green gemstone holding ancient tree memory."

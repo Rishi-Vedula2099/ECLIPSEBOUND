@@ -1,0 +1,35 @@
+# .gitignore for ECLIPSEBOUND
+
+# Godot 4
+.godot/
+*.translation
+*.import
+game/user/
+user/
+
+# Python / AI / Backend
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+ENV/
+*.log
+
+# Node / Web Frontend
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Docker / Storage data
+infrastructure/data/

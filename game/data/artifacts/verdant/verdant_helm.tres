@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "verdant_helm"
+artifact_name = "Verdant Crown"
+slot = "Helm"
+rarity = "Rare"
+set_id = "Verdant Guardian"
+bonus_vit = 6
+bonus_str = 2
+bonus_arc = 0
+bonus_def = 4
+bonus_agi = 0
+bonus_crt = 0
+bonus_res = 3
+bonus_lck = 1
+description = "Antler crown woven from evergreen briars."
