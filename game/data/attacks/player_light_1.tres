@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/AttackData.gd" id="1_attack"]
+
+[resource]
+script = ExtResource("1_attack")
+attack_name = "Light Slash I"
+damage = 18.0
+stamina_cost = 10.0
+startup_time = 0.08
+active_time = 0.12
+recovery_time = 0.14
+knockback_force = Vector2(80, -30)
+element = "Physical"
+status_effect = "None"
+status_duration = 0.0
+status_potency = 0.0
+can_be_parried = true
+breaks_guard = false
+screen_shake_intensity = 0.15
