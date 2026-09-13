@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/WeaponData.gd" id="1_wep"]
+
+[resource]
+script = ExtResource("1_wep")
+weapon_id = "stag_horn_blade"
+weapon_name = "Stag Horn Blade"
+weapon_class = "Longsword"
+base_damage = 34.0
+str_scaling = 1.4
+arc_scaling = 1.1
+crit_bonus = 0.08
+element = "Physical"
+special_perk = "Perfect parries release a burst of verdant nature spikes dealing 30% weapon damage."

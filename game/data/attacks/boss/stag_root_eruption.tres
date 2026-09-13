@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/AttackData.gd" id="1_att"]
+
+[resource]
+script = ExtResource("1_att")
+attack_name = "Verdant Root Eruption"
+damage = 36.0
+stamina_cost = 0.0
+startup_time = 0.45
+active_time = 0.25
+recovery_time = 0.40
+knockback_force = Vector2(0, -220)
+element = "Physical"
+status_effect = "Poison"
+status_duration = 3.0
+status_potency = 4.0
+can_be_parried = true
+breaks_guard = false
+screen_shake_intensity = 0.4

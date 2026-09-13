@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/AttackData.gd" id="1_att"]
+
+[resource]
+script = ExtResource("1_att")
+attack_name = "Ancient Guardian Cleave"
+damage = 38.0
+stamina_cost = 0.0
+startup_time = 0.42
+active_time = 0.20
+recovery_time = 0.50
+knockback_force = Vector2(220, -80)
+element = "Physical"
+status_effect = "Stagger"
+status_duration = 1.0
+status_potency = 1.0
+can_be_parried = true
+breaks_guard = true
+screen_shake_intensity = 0.35

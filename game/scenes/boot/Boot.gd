@@ -6,7 +6,7 @@ func _ready() -> void:
 	call_deferred("_launch_arena")
 
 func _launch_arena() -> void:
-	get_tree().change_scene_to_file("res://scenes/arenas/TestArena.tscn")
+	get_tree().change_scene_to_file("res://scenes/levels/VerdantMarchWorld.tscn")
 
 func _draw() -> void:
 	draw_rect(Rect2(0, 0, 480, 270), Color("#0a0814"), true)
