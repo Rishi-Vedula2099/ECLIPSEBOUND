@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/WeaponData.gd" id="1_wep"]
+
+[resource]
+script = ExtResource("1_wep")
+weapon_id = "great_hammer_earth_shaker"
+weapon_name = "Earth Shaker Great Hammer"
+weapon_class = "Great Hammer"
+rarity = "Epic"
+base_damage = 58.0
+str_scaling = 2.1
+arc_scaling = 0.2
+agi_scaling = 0.1
+crit_bonus = 0.04
+attack_speed_multiplier = 0.65
+stamina_cost_multiplier = 1.6
+element = "Physical"
+upgrade_level = 0
+special_perk = "Grants hyper-armor during swing; impacts shatter enemy armor reduction by 20%."

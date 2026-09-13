@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/WeaponData.gd" id="1_wep"]
+
+[resource]
+script = ExtResource("1_wep")
+weapon_id = "bow_moon_whisper"
+weapon_name = "Moon Whisper Bow"
+weapon_class = "Bow"
+rarity = "Rare"
+base_damage = 28.0
+str_scaling = 0.5
+arc_scaling = 0.8
+agi_scaling = 1.6
+crit_bonus = 0.14
+attack_speed_multiplier = 1.15
+stamina_cost_multiplier = 0.8
+element = "Physical"
+upgrade_level = 0
+special_perk = "Charged shots pierce through ranks and inflict 30% movement slow for 3s."

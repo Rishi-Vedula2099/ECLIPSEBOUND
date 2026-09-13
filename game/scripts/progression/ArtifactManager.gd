@@ -1,5 +1,5 @@
 # ArtifactManager.gd
-# Manages 8-piece artifact slots and evaluates multi-piece set bonuses.
+# Manages 8-piece artifact slots and evaluates multi-piece set bonuses across all 7 World sets.
 class_name ArtifactManager
 extends RefCounted
 
@@ -11,6 +11,16 @@ signal set_bonus_activated(set_id: String, piece_count: int, description: String
 const SLOTS: Array[String] = [
 	"Helm", "Armour", "Gloves", "Boots",
 	"Necklace", "Bracelet", "Ring", "Earpiece"
+]
+
+const SET_NAMES: Array[String] = [
+	"Verdant Guardian",
+	"Drowned Oath",
+	"Ashen Sovereign",
+	"Crimson Rite",
+	"Machinist's Core",
+	"Dreamwoven",
+	"Nullborn"
 ]
 
 # Currently equipped: slot_name -> ArtifactData
@@ -31,6 +41,9 @@ func unequip_artifact(slot_name: String) -> ArtifactData:
 		return removed
 	return null
 
+func get_artifact_in_slot(slot_name: String) -> ArtifactData:
+	return equipped_artifacts.get(slot_name, null)
+
 func get_set_counts() -> Dictionary:
 	var counts: Dictionary = {}
 	for slot in equipped_artifacts.keys():
@@ -42,29 +55,96 @@ func get_set_counts() -> Dictionary:
 func get_total_stat_bonuses() -> Dictionary:
 	var totals: Dictionary = {
 		"vit": 0, "str": 0, "arc": 0, "def": 0,
-		"agi": 0, "crt": 0, "res": 0, "lck": 0
+		"agi": 0, "crt": 0, "res": 0, "lck": 0,
+		"max_hp_multiplier": 1.0,
+		"attack_multiplier": 1.0,
+		"defense_multiplier": 1.0,
+		"crit_damage_modifier": 0.0
 	}
+	
 	for slot in equipped_artifacts.keys():
 		var a: ArtifactData = equipped_artifacts[slot]
 		if a:
-			totals["vit"] += a.bonus_vit
-			totals["str"] += a.bonus_str
-			totals["arc"] += a.bonus_arc
-			totals["def"] += a.bonus_def
-			totals["agi"] += a.bonus_agi
-			totals["crt"] += a.bonus_crt
-			totals["res"] += a.bonus_res
-			totals["lck"] += a.bonus_lck
+			totals["vit"] += a.get_total_stat("vit")
+			totals["str"] += a.get_total_stat("str")
+			totals["arc"] += a.get_total_stat("arc")
+			totals["def"] += a.get_total_stat("def")
+			totals["agi"] += a.get_total_stat("agi")
+			totals["crt"] += a.get_total_stat("crt")
+			totals["res"] += a.get_total_stat("res")
+			totals["lck"] += a.get_total_stat("lck")
+			
+			# Check corrupted traits
+			if a.is_corrupted and not a.corrupted_affix.is_empty():
+				var boon = a.corrupted_affix.get("boon", "")
+				var boon_val = float(a.corrupted_affix.get("boon_val", 0.0))
+				var curse = a.corrupted_affix.get("curse", "")
+				var curse_val = float(a.corrupted_affix.get("curse_val", 0.0))
+				
+				if boon == "crit_damage": totals["crit_damage_modifier"] += boon_val
+				elif boon == "attack_boost": totals["attack_multiplier"] += boon_val
+				
+				if curse == "max_hp_penalty": totals["max_hp_multiplier"] += curse_val
+				elif curse == "defense_penalty": totals["defense_multiplier"] += curse_val
+	
+	# Apply 2-piece set bonuses to stats
+	var counts = get_set_counts()
+	if counts.get("Verdant Guardian", 0) >= 2:
+		totals["max_hp_multiplier"] += 0.15
+	if counts.get("Nullborn", 0) >= 2:
+		for k in ["vit", "str", "arc", "def", "agi", "crt", "res", "lck"]:
+			totals[k] += 20
+	if counts.get("Crimson Rite", 0) >= 2:
+		totals["crit_damage_modifier"] += 0.15
+	if counts.get("Ashen Sovereign", 0) >= 2:
+		totals["def"] += 15
+		totals["res"] += 20
+
 	return totals
 
-# Evaluate Verdant Guardian Set Bonuses
-func get_active_verdant_bonuses() -> Dictionary:
+# Evaluate active bonuses for any set at 2, 4, 6, 8 pieces
+func get_set_bonuses(set_name: String) -> Dictionary:
 	var counts = get_set_counts()
-	var count = counts.get("Verdant Guardian", 0)
+	var count = counts.get(set_name, 0)
 	return {
-		"2_piece_max_hp_bonus": count >= 2,       # +15% Health
-		"4_piece_verdant_bloom": count >= 4,      # 10% HP/Stamina restore on perfect parry
-		"6_piece_living_fortitude": count >= 6,   # 20% Damage reduction near roots
-		"8_piece_wrath_of_forest": count >= 8,    # 50% Bonus nature damage on critical strike
-		"active_count": count
+		"set_name": set_name,
+		"count": count,
+		"2_piece": count >= 2,
+		"4_piece": count >= 4,
+		"6_piece": count >= 6,
+		"8_piece": count >= 8
 	}
+
+# Backward compatibility for existing World 1 Verdant Guardian
+func get_active_verdant_bonuses() -> Dictionary:
+	var b = get_set_bonuses("Verdant Guardian")
+	return {
+		"2_piece_max_hp_bonus": b["2_piece"],
+		"4_piece_verdant_bloom": b["4_piece"],
+		"6_piece_living_fortitude": b["6_piece"],
+		"8_piece_wrath_of_forest": b["8_piece"],
+		"active_count": b["count"]
+	}
+
+# Check if a specific high-tier set mechanic is active
+func has_set_mechanic(set_name: String, threshold: int) -> bool:
+	var counts = get_set_counts()
+	return counts.get(set_name, 0) >= threshold
+
+# --- Serialization ---
+func to_array() -> Array:
+	var list: Array = []
+	for slot in equipped_artifacts.keys():
+		var a: ArtifactData = equipped_artifacts[slot]
+		if a:
+			list.append(a.to_dict())
+	return list
+
+func from_array(list: Array) -> void:
+	equipped_artifacts.clear()
+	for item_dict in list:
+		if typeof(item_dict) == TYPE_DICTIONARY:
+			var a = ArtifactData.from_dict(item_dict)
+			if SLOTS.has(a.slot):
+				equipped_artifacts[a.slot] = a
+	artifacts_changed.emit()

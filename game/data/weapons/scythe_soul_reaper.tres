@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/WeaponData.gd" id="1_wep"]
+
+[resource]
+script = ExtResource("1_wep")
+weapon_id = "scythe_soul_reaper"
+weapon_name = "Soul Reaper Scythe"
+weapon_class = "Scythe"
+rarity = "Legendary"
+base_damage = 42.0
+str_scaling = 1.1
+arc_scaling = 1.2
+agi_scaling = 0.9
+crit_bonus = 0.12
+attack_speed_multiplier = 0.95
+stamina_cost_multiplier = 1.1
+element = "Curse"
+upgrade_level = 0
+special_perk = "Wide sweeping slashes siphon 6% damage as health; instantly executes non-bosses below 12% HP."

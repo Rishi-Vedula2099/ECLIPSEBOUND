@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/WeaponData.gd" id="1_wep"]
+
+[resource]
+script = ExtResource("1_wep")
+weapon_id = "arcane_staff_astral_weaver"
+weapon_name = "Astral Weaver Staff"
+weapon_class = "Arcane Staff"
+rarity = "Epic"
+base_damage = 36.0
+str_scaling = 0.2
+arc_scaling = 2.4
+agi_scaling = 0.4
+crit_bonus = 0.10
+attack_speed_multiplier = 0.9
+stamina_cost_multiplier = 0.9
+element = "Arcane"
+upgrade_level = 0
+special_perk = "Fires homing starlight orbs that restore 4 energy on target impact."

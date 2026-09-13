@@ -38,13 +38,15 @@ func save_game(slot: int = 1, player_node: Node2D = null, custom_world_data: Dic
 	var player_dict: Dictionary = _extract_player_data(player_node)
 	var world_dict: Dictionary = {
 		"world_id": custom_world_data.get("world_id", 1),
+		"world_level": custom_world_data.get("world_level", 1),
 		"checkpoint_id": active_checkpoint_id,
 		"checkpoint_position": {
 			"x": active_checkpoint_position.x,
 			"y": active_checkpoint_position.y
 		},
 		"unlocked_flags": custom_world_data.get("unlocked_flags", ["starter_shrine_unlocked"]),
-		"bosses_defeated": custom_world_data.get("bosses_defeated", [])
+		"bosses_defeated": custom_world_data.get("bosses_defeated", []),
+		"boss_mastery": custom_world_data.get("boss_mastery", {})
 	}
 	
 	var root_dict: Dictionary = {
@@ -136,6 +138,9 @@ func _extract_player_data(player_node: Node2D) -> Dictionary:
 	if not player_node:
 		return get_default_player_data()
 	
+	if player_node.has_method("get_save_state"):
+		return player_node.get_save_state()
+	
 	var pos: Vector2 = player_node.global_position
 	var level: int = 1
 	var xp: float = 0.0
@@ -148,9 +153,6 @@ func _extract_player_data(player_node: Node2D) -> Dictionary:
 		"agi": 10, "crt": 10, "res": 10, "lck": 10
 	}
 	
-	if player_node.has_method("get_save_state"):
-		return player_node.get_save_state()
-	
 	return {
 		"level": level,
 		"xp": xp,
@@ -160,8 +162,11 @@ func _extract_player_data(player_node: Node2D) -> Dictionary:
 		"energy": energy,
 		"position": {"x": pos.x, "y": pos.y},
 		"stats": stats,
-		"equipped_weapon": "rebellion",
-		"artifacts": []
+		"equipped_weapon": "stag_horn_blade",
+		"artifacts": [],
+		"skills": {},
+		"weapon_mastery": {},
+		"inventory": {"items": [], "materials": {}}
 	}
 
 func get_default_player_data() -> Dictionary:
@@ -177,6 +182,9 @@ func get_default_player_data() -> Dictionary:
 			"vit": 10, "str": 10, "arc": 10, "def": 10,
 			"agi": 10, "crt": 10, "res": 10, "lck": 10
 		},
-		"equipped_weapon": "rebellion",
-		"artifacts": []
+		"equipped_weapon": "stag_horn_blade",
+		"artifacts": [],
+		"skills": {},
+		"weapon_mastery": {},
+		"inventory": {"items": [], "materials": {}}
 	}

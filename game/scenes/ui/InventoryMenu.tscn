@@ -1,0 +1,267 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/InventoryMenu.gd" id="1_inv"]
+
+[node name="InventoryMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_inv")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundDim" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.05, 0.08, 0.85)
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -125.0
+offset_right = 220.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="HBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = -10.0
+offset_bottom = 26.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Control/Panel/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ECLIPSEBOUND — CHARACTER & INVENTORY"
+
+[node name="GoldLabel" type="Label" parent="Control/Panel/Header"]
+layout_mode = 2
+text = "Gold: 500  |  Verdant Shards: 10"
+
+[node name="TabContainer" type="TabContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 28.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Equipment" type="TabBar" parent="Control/Panel/TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/TabContainer/Equipment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/TabContainer/Equipment/MarginContainer"]
+layout_mode = 2
+
+[node name="GearSlots" type="VBoxContainer" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SlotsHeader" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/GearSlots"]
+layout_mode = 2
+text = "EQUIPPED GEAR"
+
+[node name="WeaponLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/GearSlots"]
+layout_mode = 2
+text = "Weapon: Stag Horn Blade (+0)"
+
+[node name="HelmLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/GearSlots"]
+layout_mode = 2
+text = "Helm: [Empty]"
+
+[node name="ArmourLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/GearSlots"]
+layout_mode = 2
+text = "Armour: [Empty]"
+
+[node name="GlovesLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/GearSlots"]
+layout_mode = 2
+text = "Gloves: [Empty]"
+
+[node name="BootsLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/GearSlots"]
+layout_mode = 2
+text = "Boots: [Empty]"
+
+[node name="JewelryLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/GearSlots"]
+layout_mode = 2
+text = "Necklace / Bracelet / Ring / Earpiece"
+
+[node name="StatsPanel" type="VBoxContainer" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnspentStatPointsLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/StatsPanel"]
+layout_mode = 2
+text = "Unspent Stat Points: 0"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/StatsPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StatsList" type="VBoxContainer" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/StatsPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VITLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/StatsPanel/ScrollContainer/StatsList"]
+layout_mode = 2
+text = "VIT (Health): 10"
+
+[node name="STRLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/StatsPanel/ScrollContainer/StatsList"]
+layout_mode = 2
+text = "STR (Physical): 10"
+
+[node name="ARCLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/StatsPanel/ScrollContainer/StatsList"]
+layout_mode = 2
+text = "ARC (Ability): 10"
+
+[node name="DEFLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/StatsPanel/ScrollContainer/StatsList"]
+layout_mode = 2
+text = "DEF (Defense): 10"
+
+[node name="AGILabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/StatsPanel/ScrollContainer/StatsList"]
+layout_mode = 2
+text = "AGI (Mobility): 10"
+
+[node name="CRTLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/StatsPanel/ScrollContainer/StatsList"]
+layout_mode = 2
+text = "CRT (Crit Rate/Dmg): 10"
+
+[node name="RESLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/StatsPanel/ScrollContainer/StatsList"]
+layout_mode = 2
+text = "RES (Status Resist): 10"
+
+[node name="LCKLabel" type="Label" parent="Control/Panel/TabContainer/Equipment/MarginContainer/HBoxContainer/StatsPanel/ScrollContainer/StatsList"]
+layout_mode = 2
+text = "LCK (Loot / Luck): 10"
+
+[node name="Inventory" type="TabBar" parent="Control/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="InvLabel" type="Label" parent="Control/Panel/TabContainer/Inventory"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 10.0
+offset_right = 100.0
+offset_bottom = 30.0
+grow_horizontal = 2
+text = "BAG & ARTIFACT STORAGE"
+horizontal_alignment = 1
+
+[node name="Skills" type="TabBar" parent="Control/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/TabContainer/Skills"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/TabContainer/Skills/MarginContainer"]
+layout_mode = 2
+
+[node name="HeaderHBox" type="HBoxContainer" parent="Control/Panel/TabContainer/Skills/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="UnspentSkillPointsLabel" type="Label" parent="Control/Panel/TabContainer/Skills/MarginContainer/VBoxContainer/HeaderHBox"]
+layout_mode = 2
+text = "Unspent Skill Points: 0"
+
+[node name="BranchesList" type="Label" parent="Control/Panel/TabContainer/Skills/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "4 Skill Branches: WARDEN | REAVER | ARCANE | VOID"
+
+[node name="Mastery" type="TabBar" parent="Control/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MasteryHeader" type="Label" parent="Control/Panel/TabContainer/Mastery"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 30.0
+grow_horizontal = 2
+text = "WEAPON MASTERY (1-10)"
+horizontal_alignment = 1
+
+[node name="ClassesList" type="Label" parent="Control/Panel/TabContainer/Mastery"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 40.0
+offset_right = 400.0
+offset_bottom = 140.0
+text = "1. Longsword - Mastery Rank 1
+2. Twin Blades - Mastery Rank 1
+3. Great Hammer - Mastery Rank 1
+4. Scythe - Mastery Rank 1
+5. Bow - Mastery Rank 1
+6. Arcane Staff - Mastery Rank 1
+7. Void Blade - Mastery Rank 1"
+
+[node name="Crafting" type="TabBar" parent="Control/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CraftingHeader" type="Label" parent="Control/Panel/TabContainer/Crafting"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 30.0
+grow_horizontal = 2
+text = "THE ECLIPSE FORGE"
+horizontal_alignment = 1
+
+[node name="CraftingInfo" type="Label" parent="Control/Panel/TabContainer/Crafting"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 40.0
+offset_right = 400.0
+offset_bottom = 120.0
+text = "1. Craft: Assemble new weapons & artifacts
+2. Upgrade: Enhance item tier from +0 to +10
+3. Reforge: Reroll all substat values
+4. Reroll: Replace targeted substat affix
+5. Transmute: Combine 3 artifacts -> Higher rarity / Corrupted"

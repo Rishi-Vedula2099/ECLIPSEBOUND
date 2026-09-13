@@ -8,6 +8,16 @@ const AttackData = preload("res://scripts/combat/AttackData.gd")
 const Hitbox = preload("res://scripts/combat/Hitbox.gd")
 const Hurtbox = preload("res://scripts/combat/Hurtbox.gd")
 const PlayerStats = preload("res://scripts/core/PlayerStats.gd")
+const ArtifactManager = preload("res://scripts/progression/ArtifactManager.gd")
+const ProgressionManager = preload("res://scripts/progression/ProgressionManager.gd")
+const SkillTreeManager = preload("res://scripts/progression/SkillTreeManager.gd")
+const WeaponMasteryManager = preload("res://scripts/weapons/WeaponMasteryManager.gd")
+const InventoryManager = preload("res://scripts/inventory/InventoryManager.gd")
+const CraftingManager = preload("res://scripts/inventory/CraftingManager.gd")
+const WeaponData = preload("res://scripts/weapons/WeaponData.gd")
+const ArtifactData = preload("res://scripts/artifacts/ArtifactData.gd")
+const BehavioralFingerprint = preload("res://scripts/ai/BehavioralFingerprint.gd")
+const TelemetryDispatcher = preload("res://scripts/core/TelemetryDispatcher.gd")
 
 # State Machine Enum
 enum State {
@@ -93,9 +103,32 @@ var current_attack_data: AttackData = null
 var is_dead: bool = false
 
 var stats: PlayerStats = null
+var artifact_mgr: ArtifactManager = null
+var progression_mgr: ProgressionManager = null
+var skill_mgr: SkillTreeManager = null
+var weapon_mastery_mgr: WeaponMasteryManager = null
+var inventory_mgr: InventoryManager = null
+var crafting_mgr: CraftingManager = null
+var equipped_weapon: WeaponData = null
+var fingerprint: RefCounted = null
+var telemetry_dispatcher: Node = null
 
 func _ready() -> void:
 	stats = PlayerStats.new()
+	artifact_mgr = ArtifactManager.new()
+	progression_mgr = ProgressionManager.new()
+	skill_mgr = SkillTreeManager.new()
+	weapon_mastery_mgr = WeaponMasteryManager.new()
+	inventory_mgr = InventoryManager.new()
+	crafting_mgr = CraftingManager.new(inventory_mgr)
+	fingerprint = BehavioralFingerprint.new()
+	telemetry_dispatcher = TelemetryDispatcher.new()
+	add_child(telemetry_dispatcher)
+	telemetry_dispatcher.call("set_fingerprint", fingerprint)
+	
+	if ResourceLoader.exists("res://data/weapons/stag_horn_blade.tres"):
+		equipped_weapon = load("res://data/weapons/stag_horn_blade.tres")
+	
 	max_health = stats.get_max_health()
 	current_health = max_health
 	current_stamina = max_stamina
@@ -317,6 +350,11 @@ func _check_combat_inputs() -> bool:
 			facing_direction = int(dash_direction.x)
 		else:
 			dash_direction = Vector2(facing_direction, 0.0)
+		
+		var dir_label: String = "RIGHT" if dash_direction.x > 0 else "LEFT"
+		if telemetry_dispatcher:
+			telemetry_dispatcher.emit_telemetry_event("player_dodge", {"direction": dir_label})
+		
 		change_state(State.DASH)
 		return true
 	
@@ -332,6 +370,8 @@ func _check_combat_inputs() -> bool:
 		if current_stamina >= attack_light_1_data.stamina_cost:
 			current_stamina -= attack_light_1_data.stamina_cost
 			stamina_changed.emit(current_stamina, max_stamina)
+			if telemetry_dispatcher:
+				telemetry_dispatcher.emit_telemetry_event("player_attack", {"type": "light", "combo_step": 1})
 			change_state(State.ATTACK_LIGHT_1)
 			return true
 	
@@ -340,6 +380,8 @@ func _check_combat_inputs() -> bool:
 		if current_stamina >= attack_heavy_data.stamina_cost:
 			current_stamina -= attack_heavy_data.stamina_cost
 			stamina_changed.emit(current_stamina, max_stamina)
+			if telemetry_dispatcher:
+				telemetry_dispatcher.emit_telemetry_event("player_attack", {"type": "heavy", "combo_step": 1})
 			change_state(State.ATTACK_HEAVY)
 			return true
 	
@@ -453,6 +495,8 @@ func _on_damage_received(incoming: AttackData, attacker_pos: Vector2, result: Di
 	current_health = max(0.0, current_health - dmg)
 	health_changed.emit(current_health, max_health)
 	EventBus.player_damaged.emit(current_health, max_health, dmg, incoming.attack_name)
+	if telemetry_dispatcher:
+		telemetry_dispatcher.emit_telemetry_event("hit_resolved", {"outcome": "hit_taken", "damage": dmg})
 	
 	# Apply Knockback
 	var kb_dir: float = 1.0 if (global_position.x - attacker_pos.x) >= 0.0 else -1.0
@@ -472,8 +516,13 @@ func _on_parry_successful(incoming: AttackData, is_perfect: bool, attacker_hitbo
 	current_stamina = min(max_stamina, current_stamina + (40.0 if is_perfect else 20.0))
 	stamina_changed.emit(current_stamina, max_stamina)
 	
+	if weapon_mastery_mgr and equipped_weapon:
+		weapon_mastery_mgr.record_parry(equipped_weapon.weapon_class)
+	
 	EventBus.player_parried.emit(incoming.attack_name, is_perfect)
 	CombatSystem.parry_resolved.emit(true, is_perfect, attacker_hitbox.attacker_owner if attacker_hitbox else null)
+	if telemetry_dispatcher:
+		telemetry_dispatcher.emit_telemetry_event("hit_resolved", {"outcome": "parry", "damage": 0.0})
 	
 	# Briefly flash or bounce
 	velocity.x = -facing_direction * 30.0
@@ -523,6 +572,11 @@ func respawn(respawn_position: Vector2) -> void:
 # --- Save / Load Hooks ---
 
 func get_save_state() -> Dictionary:
+	var stats_dict = stats.to_dict() if stats else {
+		"vit": 10, "str": 10, "arc": 10, "def": 10,
+		"agi": 10, "crt": 10, "res": 10, "lck": 10,
+		"level": 1, "current_xp": 0.0
+	}
 	return {
 		"level": stats.level if stats else 1,
 		"xp": stats.current_xp if stats else 0.0,
@@ -531,18 +585,12 @@ func get_save_state() -> Dictionary:
 		"stamina": current_stamina,
 		"energy": current_energy,
 		"position": {"x": global_position.x, "y": global_position.y},
-		"stats": {
-			"vit": stats.vit if stats else 10,
-			"str": stats.str_stat if stats else 10,
-			"arc": stats.arc if stats else 10,
-			"def": stats.def if stats else 10,
-			"agi": stats.agi if stats else 10,
-			"crt": stats.crt if stats else 10,
-			"res": stats.res if stats else 10,
-			"lck": stats.lck if stats else 10
-		},
-		"equipped_weapon": "rebellion",
-		"artifacts": []
+		"stats": stats_dict,
+		"equipped_weapon": equipped_weapon.weapon_id if equipped_weapon else "stag_horn_blade",
+		"artifacts": artifact_mgr.to_array() if artifact_mgr else [],
+		"skills": skill_mgr.to_dict() if skill_mgr else {},
+		"weapon_mastery": weapon_mastery_mgr.to_dict() if weapon_mastery_mgr else {},
+		"inventory": inventory_mgr.to_dict() if inventory_mgr else {}
 	}
 
 func load_save_state(data: Dictionary) -> void:
@@ -558,15 +606,16 @@ func load_save_state(data: Dictionary) -> void:
 		var p = data["position"]
 		global_position = Vector2(p.get("x", 100.0), p.get("y", 200.0))
 	if data.has("stats") and stats:
-		var s = data["stats"]
-		stats.vit = s.get("vit", 10)
-		stats.str_stat = s.get("str", 10)
-		stats.arc = s.get("arc", 10)
-		stats.def = s.get("def", 10)
-		stats.agi = s.get("agi", 10)
-		stats.crt = s.get("crt", 10)
-		stats.res = s.get("res", 10)
-		stats.lck = s.get("lck", 10)
+		stats.from_dict(data["stats"])
+	if data.has("artifacts") and artifact_mgr:
+		artifact_mgr.from_array(data["artifacts"])
+	if data.has("skills") and skill_mgr:
+		skill_mgr.from_dict(data["skills"])
+	if data.has("weapon_mastery") and weapon_mastery_mgr:
+		weapon_mastery_mgr.from_dict(data["weapon_mastery"])
+	if data.has("inventory") and inventory_mgr:
+		inventory_mgr.from_dict(data["inventory"])
+	
 	health_changed.emit(current_health, max_health)
 	stamina_changed.emit(current_stamina, max_stamina)
 	energy_changed.emit(current_energy, max_energy)

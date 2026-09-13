@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/WeaponData.gd" id="1_wep"]
+
+[resource]
+script = ExtResource("1_wep")
+weapon_id = "twin_blades_shadow_fang"
+weapon_name = "Shadow Fang Twin Blades"
+weapon_class = "Twin Blades"
+rarity = "Epic"
+base_damage = 22.0
+str_scaling = 0.6
+arc_scaling = 0.4
+agi_scaling = 1.75
+crit_bonus = 0.15
+attack_speed_multiplier = 1.45
+stamina_cost_multiplier = 0.75
+element = "Physical"
+upgrade_level = 0
+special_perk = "Consecutive flurry strikes build 2% bonus crit chance per hit (up to 20%)."
