@@ -24,6 +24,23 @@ func _ready() -> void:
 	
 	super._ready()
 
+func _setup_utility_actions() -> void:
+	# Action 1: Spore Bomb (ranged standoff)
+	var spore_action = UtilityAction.new("Spore_Bomb", 1.4, attack_cooldown)
+	spore_action.add_consideration(func(ctx):
+		var dist = ctx.get("distance", 999.0)
+		return UtilityAI.curve_bell(dist, 70.0, 40.0)
+	)
+	utility_ai.add_action(spore_action)
+	
+	# Action 2: Aerial Kiting (retreat when too close)
+	var kite_action = UtilityAction.new("Aerial_Kite", 1.6, 0.8)
+	kite_action.add_consideration(func(ctx):
+		var dist = ctx.get("distance", 999.0)
+		return UtilityAI.curve_inverse_linear(dist, 0.0, 45.0)
+	)
+	utility_ai.add_action(kite_action)
+
 func _apply_gravity(_delta: float) -> void:
 	# Aerial flight bypasses gravity; maintains hover altitude
 	pass

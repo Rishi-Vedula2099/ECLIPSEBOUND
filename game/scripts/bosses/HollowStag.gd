@@ -7,6 +7,14 @@ extends CharacterBody2D
 const AttackData = preload("res://scripts/combat/AttackData.gd")
 const Hitbox = preload("res://scripts/combat/Hitbox.gd")
 const Hurtbox = preload("res://scripts/combat/Hurtbox.gd")
+const BehaviorTree = preload("res://scripts/ai/BehaviorTree.gd")
+const BossPersonality = preload("res://scripts/ai/BossPersonality.gd")
+const CurrentFightMemory = preload("res://scripts/ai/CurrentFightMemory.gd")
+const PersistentMemoryProfile = preload("res://scripts/ai/PersistentMemoryProfile.gd")
+const AdaptationBudget = preload("res://scripts/ai/AdaptationBudget.gd")
+const UtilityAI = preload("res://scripts/ai/UtilityAI.gd")
+const TelegraphSystem = preload("res://scripts/ai/TelegraphSystem.gd")
+const FairnessEngine = preload("res://scripts/ai/FairnessEngine.gd")
 
 enum BossPhase {
 	PHASE_1_FOREST_DEITY,
@@ -55,12 +63,20 @@ var cooldown_timer: float = 0.0
 var is_telegraphing: bool = false
 var current_attack_data: AttackData = null
 
-# --- 100-Point Adaptive Fairness Engine ---
+# --- 100-Point Adaptive Fairness Engine & Modular AI ---
 var adaptation_budget: int = 100
 var observed_player_parries: int = 0
 var observed_player_dodges: int = 0
 var observed_player_attacks: int = 0
 var current_tactic: String = "Standard"
+
+var personality: BossPersonality = null
+var fight_memory: CurrentFightMemory = null
+var persistent_profile: PersistentMemoryProfile = null
+var budget_regulator: AdaptationBudget = null
+var utility_ai: UtilityAI = null
+var telegraph_system: TelegraphSystem = null
+var fairness_engine: RefCounted = null
 
 @onready var hitbox: Hitbox = $Hitbox
 @onready var hurtbox: Hurtbox = $Hurtbox
@@ -69,6 +85,15 @@ var current_tactic: String = "Standard"
 func _ready() -> void:
 	current_health = max_health
 	_load_attack_resources()
+	
+	# Instantiate AI subsystems
+	personality = BossPersonality.new(0.65, 0.45, 0.80, 0.60)
+	fight_memory = CurrentFightMemory.new()
+	persistent_profile = PersistentMemoryProfile.new()
+	budget_regulator = AdaptationBudget.new(100)
+	utility_ai = UtilityAI.new()
+	telegraph_system = TelegraphSystem.new()
+	fairness_engine = FairnessEngine.new()
 	
 	if hurtbox:
 		hurtbox.damage_received.connect(_on_damage_received)
@@ -108,6 +133,10 @@ func _physics_process(delta: float) -> void:
 	
 	if cooldown_timer > 0.0:
 		cooldown_timer -= delta
+	
+	if budget_regulator:
+		budget_regulator.update(delta)
+		adaptation_budget = budget_regulator.current_budget
 	
 	_locate_player()
 	
@@ -319,6 +348,8 @@ func _on_damage_received(incoming: AttackData, _attacker_pos: Vector2, result: D
 
 func _on_parried_by_player(_incoming: AttackData, is_perfect: bool, _hitbox_node: Area2D) -> void:
 	observed_player_parries += 1
+	if fight_memory:
+		fight_memory.record_event("parry", {"perfect": is_perfect})
 	if is_perfect:
 		_show_text_popup("PERFECT PARRY!", Color("#00f5d4"))
 		change_boss_state(BossState.STAGGER)
@@ -327,12 +358,18 @@ func _on_parried_by_player(_incoming: AttackData, is_perfect: bool, _hitbox_node
 
 func _on_observed_player_parry(_target: String, is_perfect: bool) -> void:
 	observed_player_parries += (2 if is_perfect else 1)
+	if fight_memory:
+		fight_memory.record_event("parry", {"perfect": is_perfect})
 
-func _on_observed_player_dodge(_dir: Vector2, _perfect: bool) -> void:
+func _on_observed_player_dodge(dir: Vector2, _perfect: bool) -> void:
 	observed_player_dodges += 1
+	if fight_memory:
+		fight_memory.record_event("dodge", {"direction": "left" if dir.x < 0 else "right"})
 
-func _on_observed_player_attack(_weapon: String, _type: String, _pos: Vector2) -> void:
+func _on_observed_player_attack(_weapon: String, type: String, _pos: Vector2) -> void:
 	observed_player_attacks += 1
+	if fight_memory:
+		fight_memory.record_event(type if type != "" else "attack_light")
 
 func _position_hitbox(offset_pos: Vector2) -> void:
 	if hitbox:

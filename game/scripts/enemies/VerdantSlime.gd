@@ -24,6 +24,23 @@ func _ready() -> void:
 	
 	super._ready()
 
+func _setup_utility_actions() -> void:
+	# Action 1: Acid Lunge (close acid splash)
+	var acid_action = UtilityAction.new("Acid_Lunge", 1.3, attack_cooldown)
+	acid_action.add_consideration(func(ctx):
+		var dist = ctx.get("distance", 999.0)
+		return UtilityAI.curve_inverse_linear(dist, 0.0, 32.0)
+	)
+	utility_ai.add_action(acid_action)
+	
+	# Action 2: Swarm Jump (gap closing hop)
+	var hop_action = UtilityAction.new("Swarm_Hop", 1.0, 1.0)
+	hop_action.add_consideration(func(ctx):
+		var dist = ctx.get("distance", 999.0)
+		return UtilityAI.curve_linear(dist, 30.0, 120.0)
+	)
+	utility_ai.add_action(hop_action)
+
 func _process_chase(delta: float) -> void:
 	if not target_player or not is_instance_valid(target_player):
 		target_player = null

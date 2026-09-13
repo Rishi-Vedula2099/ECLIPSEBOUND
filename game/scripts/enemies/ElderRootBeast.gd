@@ -24,6 +24,23 @@ func _ready() -> void:
 	
 	super._ready()
 
+func _setup_utility_actions() -> void:
+	# Action 1: Seismic Stomp (close shockwave)
+	var stomp_action = UtilityAction.new("Seismic_Stomp", 1.6, attack_cooldown)
+	stomp_action.add_consideration(func(ctx):
+		var dist = ctx.get("distance", 999.0)
+		return UtilityAI.curve_inverse_linear(dist, 0.0, 60.0)
+	)
+	utility_ai.add_action(stomp_action)
+	
+	# Action 2: Heavy Cleave (crushing melee sweep)
+	var sweep_action = UtilityAction.new("Root_Sweep", 1.2, 1.5)
+	sweep_action.add_consideration(func(ctx):
+		var dist = ctx.get("distance", 999.0)
+		return UtilityAI.curve_bell(dist, 40.0, 25.0)
+	)
+	utility_ai.add_action(sweep_action)
+
 func _on_death() -> void:
 	miniboss_defeated.emit()
 	super._on_death()

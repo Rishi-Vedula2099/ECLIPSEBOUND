@@ -8,6 +8,9 @@ const AttackData = preload("res://scripts/combat/AttackData.gd")
 const Hitbox = preload("res://scripts/combat/Hitbox.gd")
 const Hurtbox = preload("res://scripts/combat/Hurtbox.gd")
 const CombatSystemRef = preload("res://scripts/combat/CombatSystem.gd")
+const PerceptionSystem = preload("res://scripts/ai/PerceptionSystem.gd")
+const UtilityAI = preload("res://scripts/ai/UtilityAI.gd")
+const UtilityAction = preload("res://scripts/ai/UtilityAction.gd")
 
 enum State {
 	IDLE,
@@ -56,6 +59,9 @@ var patrol_timer: float = 0.0
 var is_telegraphing: bool = false
 var is_staggered: bool = false
 
+var perception_system: PerceptionSystem = null
+var utility_ai: UtilityAI = null
+
 @onready var hitbox: Hitbox = $Hitbox
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var float_label: Label = $FloatingText
@@ -63,6 +69,16 @@ var is_staggered: bool = false
 func _ready() -> void:
 	current_health = max_health
 	current_poise = max_poise
+	
+	# Modular Perception System
+	perception_system = PerceptionSystem.new()
+	perception_system.vision_range = detection_radius
+	perception_system.hearing_radius = lose_target_radius
+	add_child(perception_system)
+	
+	# Modular Utility AI
+	utility_ai = UtilityAI.new()
+	_setup_utility_actions()
 	
 	if hurtbox:
 		hurtbox.damage_received.connect(_on_damage_received)
@@ -81,6 +97,22 @@ func _ready() -> void:
 	CombatSystem.parry_resolved.connect(_on_global_parry_resolved)
 	EventBus.enemy_spawned.emit(enemy_id, enemy_name, global_position)
 
+func _setup_utility_actions() -> void:
+	# Default base enemy actions: Melee Strike and Reposition
+	var melee_action = UtilityAction.new("Melee_Strike", 1.2, attack_cooldown)
+	melee_action.add_consideration(func(ctx):
+		var dist = ctx.get("distance", 999.0)
+		return UtilityAI.curve_inverse_linear(dist, 0.0, attack_range * 1.2)
+	)
+	utility_ai.add_action(melee_action)
+	
+	var reposition_action = UtilityAction.new("Reposition", 0.8, 1.0)
+	reposition_action.add_consideration(func(ctx):
+		var dist = ctx.get("distance", 999.0)
+		return UtilityAI.curve_linear(dist, attack_range, lose_target_radius)
+	)
+	utility_ai.add_action(reposition_action)
+
 func _physics_process(delta: float) -> void:
 	if current_state == State.DEAD:
 		_apply_gravity(delta)
@@ -89,6 +121,12 @@ func _physics_process(delta: float) -> void:
 	
 	if cooldown_timer > 0.0:
 		cooldown_timer -= delta
+	
+	if utility_ai:
+		utility_ai.update(delta)
+		
+	if perception_system and target_player:
+		perception_system.update_perception(target_player, facing_direction)
 	
 	# Regenerate poise when not under attack
 	if current_state != State.HURT and current_state != State.STAGGER and current_poise < max_poise:

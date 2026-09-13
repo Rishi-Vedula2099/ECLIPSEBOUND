@@ -23,6 +23,23 @@ func _ready() -> void:
 	
 	super._ready()
 
+func _setup_utility_actions() -> void:
+	# Action 1: Pounce Leap (mid-range leap attack)
+	var pounce_action = UtilityAction.new("Pounce_Leap", 1.5, attack_cooldown)
+	pounce_action.add_consideration(func(ctx):
+		var dist = ctx.get("distance", 999.0)
+		return UtilityAI.curve_bell(dist, 50.0, 30.0)
+	)
+	utility_ai.add_action(pounce_action)
+	
+	# Action 2: Melee Rush (close-range frenzy)
+	var rush_action = UtilityAction.new("Melee_Rush", 1.2, 1.2)
+	rush_action.add_consideration(func(ctx):
+		var dist = ctx.get("distance", 999.0)
+		return UtilityAI.curve_inverse_linear(dist, 0.0, 40.0)
+	)
+	utility_ai.add_action(rush_action)
+
 func _process_attack(delta: float) -> void:
 	state_timer += delta
 	var attack_data = default_attack_data

@@ -24,6 +24,23 @@ func _ready() -> void:
 	
 	super._ready()
 
+func _setup_utility_actions() -> void:
+	# Action 1: Heavy Cleave (crushing melee sweep)
+	var cleave_action = UtilityAction.new("Elite_Cleave", 1.4, attack_cooldown)
+	cleave_action.add_consideration(func(ctx):
+		var dist = ctx.get("distance", 999.0)
+		return UtilityAI.curve_inverse_linear(dist, 0.0, 52.0)
+	)
+	utility_ai.add_action(cleave_action)
+	
+	# Action 2: Guard Stance (defensive advance)
+	var guard_action = UtilityAction.new("Shield_Advance", 1.2, 3.0)
+	guard_action.add_consideration(func(ctx):
+		var dist = ctx.get("distance", 999.0)
+		return UtilityAI.curve_linear(dist, 40.0, 180.0)
+	)
+	utility_ai.add_action(guard_action)
+
 func _process_chase(delta: float) -> void:
 	# Periodically raise tower shield while approaching
 	shield_timer += delta
