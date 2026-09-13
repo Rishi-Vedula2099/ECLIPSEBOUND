@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ArtifactSetData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactSetData.gd" id="1_set"]
+
+[resource]
+script = ExtResource("1_set")
+set_id = "drowned"
+set_name = "Drowned Oath"
+world_id = 2
+description = "Sunken relics steeped in dark tides and bottomless black waters."
+bonus_2_desc = "+15% Stamina Regen"
+bonus_4_desc = "Immunity to hazard slow; +20% Dash dist"
+bonus_6_desc = "Dodge emits tidal wave"
+bonus_8_desc = "Attacks summon abyssal tentacles"
+bonus_2_stat_type = "stamina_regen_pct"
+bonus_2_stat_value = 0.15
+bonus_4_stat_type = "dash_distance_pct"
+bonus_4_stat_value = 0.20
+bonus_6_stat_type = "dodge_tidal_wave"
+bonus_6_stat_value = 1.0
+bonus_8_stat_type = "abyssal_tentacles"
+bonus_8_stat_value = 1.0

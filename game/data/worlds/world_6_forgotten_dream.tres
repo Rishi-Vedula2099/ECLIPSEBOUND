@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/WorldData.gd" id="1_world"]
+
+[resource]
+script = ExtResource("1_world")
+world_id = 6
+world_name = "The Forgotten Dream"
+visual_identity = "Impossible geometry, floating ruins, celestial haze, shifting runes"
+core_mechanic = "Reality Shift"
+set_identity = "Dreamwoven"
+major_boss_id = "the_dream_eater"
+major_boss_name = "The Dream Eater"
+adaptive_focus = "Movement timing & ability rhythms"
+ambient_color = Color(0.12, 0.06, 0.20, 1.0)
+base_xp = 2600.0
+recommended_level = 40
+level_scene_path = "res://scenes/levels/ForgottenDreamWorld.tscn"

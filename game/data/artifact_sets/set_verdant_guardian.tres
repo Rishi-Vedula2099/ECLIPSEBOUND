@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ArtifactSetData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactSetData.gd" id="1_set"]
+
+[resource]
+script = ExtResource("1_set")
+set_id = "verdant"
+set_name = "Verdant Guardian"
+world_id = 1
+description = "Ancient natural power attuned to living forest flora."
+bonus_2_desc = "+15% Max HP"
+bonus_4_desc = "10% HP/Stamina restore on parry"
+bonus_6_desc = "20% DMG reduction near roots"
+bonus_8_desc = "+50% Nature crit dmg"
+bonus_2_stat_type = "max_hp_pct"
+bonus_2_stat_value = 0.15
+bonus_4_stat_type = "parry_restore_pct"
+bonus_4_stat_value = 0.10
+bonus_6_stat_type = "damage_reduction_pct"
+bonus_6_stat_value = 0.20
+bonus_8_stat_type = "crit_damage_pct"
+bonus_8_stat_value = 0.50

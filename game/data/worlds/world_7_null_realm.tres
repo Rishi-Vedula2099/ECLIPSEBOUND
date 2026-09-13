@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/WorldData.gd" id="1_world"]
+
+[resource]
+script = ExtResource("1_world")
+world_id = 7
+world_name = "The NULL Realm"
+visual_identity = "Black void, fractured reality, eclipse rifts, digital artifacts"
+core_mechanic = "Rule Failure"
+set_identity = "Nullborn"
+major_boss_id = "null"
+major_boss_name = "NULL"
+adaptive_focus = "Complete campaign memory integration"
+ambient_color = Color(0.04, 0.02, 0.06, 1.0)
+base_xp = 3500.0
+recommended_level = 50
+level_scene_path = "res://scenes/levels/NullRealmWorld.tscn"

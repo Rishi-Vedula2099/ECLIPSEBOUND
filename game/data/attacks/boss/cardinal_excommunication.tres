@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/AttackData.gd" id="1_att"]
+
+[resource]
+script = ExtResource("1_att")
+attack_name = "Excommunication Burst"
+damage = 72.0
+stamina_cost = 0.0
+startup_time = 0.55
+active_time = 0.30
+recovery_time = 0.60
+knockback_force = Vector2(320, -120)
+element = "Blood"
+status_effect = "Bleed"
+status_duration = 6.0
+status_potency = 20.0
+can_be_parried = false
+breaks_guard = true
+screen_shake_intensity = 0.80

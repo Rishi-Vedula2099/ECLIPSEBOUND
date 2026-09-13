@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "ashen_armour"
+artifact_name = "Ashen Sovereign Cuirass"
+slot = "Armour"
+rarity = "Epic"
+set_id = "Ashen Sovereign"
+bonus_vit = 14
+bonus_str = 8
+bonus_arc = 0
+bonus_def = 24
+bonus_agi = -2
+bonus_crt = 0
+bonus_res = 16
+bonus_lck = 4
+upgrade_level = 0
+substats = [{"stat": "def", "value": 6}, {"stat": "vit", "value": 5}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "Heavy volcanic plating forged in the heart of the Ashen Sovereign's molten caldera."

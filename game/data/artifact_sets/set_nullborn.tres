@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ArtifactSetData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactSetData.gd" id="1_set"]
+
+[resource]
+script = ExtResource("1_set")
+set_id = "null"
+set_name = "Nullborn"
+world_id = 7
+description = "Glitched fragments of reality that refuse to obey the laws of physics."
+bonus_2_desc = "+20 to All 8 Attributes"
+bonus_4_desc = "Bosses cannot adapt defenses"
+bonus_6_desc = "+5% DMG per 10% missing HP"
+bonus_8_desc = "Dimensional Fracture: Resets all CDs & 5s immunity"
+bonus_2_stat_type = "all_attributes_flat"
+bonus_2_stat_value = 20.0
+bonus_4_stat_type = "nullify_boss_adaptation"
+bonus_4_stat_value = 1.0
+bonus_6_stat_type = "low_hp_scaling_dmg_pct"
+bonus_6_stat_value = 0.05
+bonus_8_stat_type = "dimensional_fracture"
+bonus_8_stat_value = 1.0

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "nullborn_ring"
+artifact_name = "Fractured Null Ring"
+slot = "Ring"
+rarity = "Corrupted"
+set_id = "Nullborn"
+bonus_vit = 0
+bonus_str = 18
+bonus_arc = 18
+bonus_def = 0
+bonus_agi = 12
+bonus_crt = 25
+bonus_res = 0
+bonus_lck = 15
+upgrade_level = 0
+substats = [{"stat": "crt", "value": 10}, {"stat": "str", "value": 8}]
+is_corrupted = true
+corrupted_affix = {"boon": "crit_damage", "boon_val": 0.40, "curse": "max_hp_penalty", "curse_val": -0.20}
+is_locked = false
+is_favorite = true
+description = "Glitched artifact pulsing with unstable void paradox. Grants overwhelming critical destruction at the cost of life essence."

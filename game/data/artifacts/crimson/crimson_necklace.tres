@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "crimson_necklace"
+artifact_name = "Crimson Rite Pendant"
+slot = "Necklace"
+rarity = "Legendary"
+set_id = "Crimson Rite"
+bonus_vit = 12
+bonus_str = 10
+bonus_arc = 12
+bonus_def = 4
+bonus_agi = 8
+bonus_crt = 18
+bonus_res = 8
+bonus_lck = 10
+upgrade_level = 0
+substats = [{"stat": "crt", "value": 6}, {"stat": "str", "value": 4}, {"stat": "vit", "value": 4}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = true
+description = "Gothic talisman dripping with coagulated scarlet ichor. Deepens blood pacts and critical strikes."

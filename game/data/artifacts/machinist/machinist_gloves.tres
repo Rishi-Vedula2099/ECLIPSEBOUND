@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "machinist_gloves"
+artifact_name = "Machinist's Core Gauntlets"
+slot = "Gloves"
+rarity = "Epic"
+set_id = "Machinist's Core"
+bonus_vit = 6
+bonus_str = 10
+bonus_arc = 12
+bonus_def = 14
+bonus_agi = 14
+bonus_crt = 8
+bonus_res = 8
+bonus_lck = 6
+upgrade_level = 0
+substats = [{"stat": "str", "value": 5}, {"stat": "crt", "value": 4}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "Articulated brass gauntlets fitted with pneumatic pressure servos and conductive coils."

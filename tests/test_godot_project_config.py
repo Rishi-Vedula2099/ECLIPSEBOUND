@@ -110,3 +110,182 @@ def test_attack_data_resources_exist():
             assert "damage =" in c
             assert "stamina_cost =" in c
             assert "startup_time =" in c
+
+
+def test_phase3_progression_files_and_weapons_exist():
+    """Verify all 7 weapon classes, UI scenes, and Phase 3 manager scripts exist."""
+    required_scripts = [
+        "progression/ProgressionManager.gd",
+        "progression/SkillTreeManager.gd",
+        "progression/SkillNode.gd",
+        "weapons/WeaponMasteryManager.gd",
+        "inventory/InventoryManager.gd",
+        "inventory/CraftingManager.gd",
+        "ui/InventoryMenu.gd",
+    ]
+    for rel_path in required_scripts:
+        full_path = os.path.join(GAME_DIR, "scripts", rel_path.replace("/", os.sep))
+        assert os.path.isfile(full_path), f"Missing Phase 3 script: {rel_path}"
+
+    weapon_files = [
+        "longsword_iron_vow.tres",
+        "twin_blades_shadow_fang.tres",
+        "great_hammer_earth_shaker.tres",
+        "scythe_soul_reaper.tres",
+        "bow_moon_whisper.tres",
+        "arcane_staff_astral_weaver.tres",
+        "void_blade_eclipse_edge.tres",
+        "stag_horn_blade.tres",
+    ]
+    for w in weapon_files:
+        path = os.path.join(GAME_DIR, "data", "weapons", w)
+        assert os.path.isfile(path), f"Missing weapon preset resource: {w}"
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+            assert 'script_class="WeaponData"' in content
+
+    # Verify InventoryMenu scene
+    inv_scene = os.path.join(GAME_DIR, "scenes", "ui", "InventoryMenu.tscn")
+    assert os.path.isfile(inv_scene), "Missing InventoryMenu.tscn scene"
+
+
+def test_phase4_ai_framework_files_exist():
+    """Verify all Phase 4 AI framework modular scripts exist."""
+    ai_scripts = [
+        "ai/PerceptionSystem.gd",
+        "ai/State.gd",
+        "ai/StateMachine.gd",
+        "ai/UtilityAction.gd",
+        "ai/UtilityAI.gd",
+        "ai/BTNode.gd",
+        "ai/BehaviorTree.gd",
+        "ai/BossPersonality.gd",
+        "ai/CurrentFightMemory.gd",
+        "ai/PersistentMemoryProfile.gd",
+        "ai/AdaptationBudget.gd",
+        "ai/TelegraphSystem.gd",
+    ]
+    for rel_path in ai_scripts:
+        full_path = os.path.join(GAME_DIR, "scripts", rel_path.replace("/", os.sep))
+        assert os.path.isfile(full_path), f"Missing Phase 4 AI script: {rel_path}"
+
+
+def test_phase5_adaptive_intelligence_files_exist():
+    """Verify all Phase 5 Adaptive Game Intelligence & Fairness scripts exist."""
+    phase5_scripts = [
+        "ai/BehavioralFingerprint.gd",
+        "ai/FairnessEngine.gd",
+        "core/TelemetryDispatcher.gd",
+    ]
+    for rel_path in phase5_scripts:
+        full_path = os.path.join(GAME_DIR, "scripts", rel_path.replace("/", os.sep))
+        assert os.path.isfile(full_path), f"Missing Phase 5 script: {rel_path}"
+
+
+def test_phase6_campaign_expansion_files_exist():
+    """Verify all Phase 6 Campaign Expansion Worlds 2-7 scripts, scenes, and resources exist."""
+    # World Mechanics & Core Data
+    world_mechanics = [
+        "world/WaterDepthManager.gd",
+        "world/HeatZoneManager.gd",
+        "world/BloodRiteManager.gd",
+        "world/MachineStateManager.gd",
+        "world/RealityShiftManager.gd",
+        "world/RuleFailureManager.gd",
+        "world/WorldData.gd",
+        "artifacts/ArtifactSetData.gd",
+    ]
+    for rel_path in world_mechanics:
+        full_path = os.path.join(GAME_DIR, "scripts", rel_path.replace("/", os.sep))
+        assert os.path.isfile(full_path), f"Missing World mechanic script: {rel_path}"
+
+    # Major Bosses
+    bosses = [
+        "DrownedMatriarch",
+        "AshKing",
+        "CardinalOfBlood",
+        "TheArchitect",
+        "TheDreamEater",
+        "NullBoss",
+    ]
+    for boss in bosses:
+        script_path = os.path.join(GAME_DIR, "scripts", "bosses", f"{boss}.gd")
+        scene_path = os.path.join(GAME_DIR, "scenes", "bosses", f"{boss}.tscn")
+        assert os.path.isfile(script_path), f"Missing boss script: {boss}.gd"
+        assert os.path.isfile(scene_path), f"Missing boss scene: {boss}.tscn"
+
+    # Campaign Worlds 2-7 Levels
+    worlds = [
+        "DrownedWoodsWorld",
+        "AshenSovereignWorld",
+        "CrimsonCathedralWorld",
+        "BrokenMachineWorld",
+        "ForgottenDreamWorld",
+        "NullRealmWorld",
+    ]
+    for world in worlds:
+        script_path = os.path.join(GAME_DIR, "scripts", "levels", f"{world}.gd")
+        scene_path = os.path.join(GAME_DIR, "scenes", "levels", f"{world}.tscn")
+        assert os.path.isfile(script_path), f"Missing world level script: {world}.gd"
+        assert os.path.isfile(scene_path), f"Missing world level scene: {world}.tscn"
+
+    # World Data Resources
+    world_tres = [
+        "world_1_verdant_march.tres",
+        "world_2_drowned_woods.tres",
+        "world_3_ashen_sovereign.tres",
+        "world_4_crimson_cathedral.tres",
+        "world_5_broken_machine.tres",
+        "world_6_forgotten_dream.tres",
+        "world_7_null_realm.tres",
+    ]
+    for wt in world_tres:
+        path = os.path.join(GAME_DIR, "data", "worlds", wt)
+        assert os.path.isfile(path), f"Missing world data resource: {wt}"
+
+    # Artifact Set Resources
+    artifact_sets = [
+        "set_verdant_guardian.tres",
+        "set_drowned_oath.tres",
+        "set_ashen_sovereign.tres",
+        "set_crimson_rite.tres",
+        "set_machinists_core.tres",
+        "set_dreamwoven.tres",
+        "set_nullborn.tres",
+    ]
+    for st in artifact_sets:
+        path = os.path.join(GAME_DIR, "data", "artifact_sets", st)
+        assert os.path.isfile(path), f"Missing artifact set resource: {st}"
+
+    # Boss Attacks
+    boss_attacks = [
+        "matriarch_tidal_cleave.tres",
+        "matriarch_whirlpool.tres",
+        "matriarch_abyssal_torrent.tres",
+        "matriarch_depth_slam.tres",
+        "ash_king_flame_sunder.tres",
+        "ash_king_magma_eruption.tres",
+        "ash_king_pyroclastic_wave.tres",
+        "ash_king_molten_counter.tres",
+        "cardinal_blood_spear.tres",
+        "cardinal_sanguine_siphon.tres",
+        "cardinal_hemorrhage_seal.tres",
+        "cardinal_excommunication.tres",
+        "architect_cogwheel_crush.tres",
+        "architect_circuit_surge.tres",
+        "architect_clockwork_laser.tres",
+        "architect_drone_protocol.tres",
+        "dream_mirage_strike.tres",
+        "dream_reality_tear.tres",
+        "dream_nightmare_spikes.tres",
+        "dream_lucidity_collapse.tres",
+        "null_glitch_strike.tres",
+        "null_memory_echo.tres",
+        "null_void_singularity.tres",
+        "null_execution_error.tres",
+    ]
+    for ba in boss_attacks:
+        path = os.path.join(GAME_DIR, "data", "attacks", "boss", ba)
+        assert os.path.isfile(path), f"Missing boss attack resource: {ba}"
+
+

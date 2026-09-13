@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ArtifactSetData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactSetData.gd" id="1_set"]
+
+[resource]
+script = ExtResource("1_set")
+set_id = "crimson"
+set_name = "Crimson Rite"
+world_id = 4
+description = "Sanguine regalia worn by the blood ministers of the crimson spires."
+bonus_2_desc = "+15% Crit DMG"
+bonus_4_desc = "Crits siphon 3% Max HP"
+bonus_6_desc = "+35% DMG to bleeding targets"
+bonus_8_desc = "Hemorrhage detonates 15% target HP"
+bonus_2_stat_type = "crit_dmg_pct"
+bonus_2_stat_value = 0.15
+bonus_4_stat_type = "crit_lifesteal_pct"
+bonus_4_stat_value = 0.03
+bonus_6_stat_type = "bleeding_dmg_pct"
+bonus_6_stat_value = 0.35
+bonus_8_stat_type = "hemorrhage_detonation_pct"
+bonus_8_stat_value = 0.15

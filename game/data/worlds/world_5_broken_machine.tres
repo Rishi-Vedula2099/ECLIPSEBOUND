@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/WorldData.gd" id="1_world"]
+
+[resource]
+script = ExtResource("1_world")
+world_id = 5
+world_name = "The Broken Machine"
+visual_identity = "Industrial megastructure, clockwork, electrical conduits, steam vents"
+core_mechanic = "Machine State"
+set_identity = "Machinist's Core"
+major_boss_id = "the_architect"
+major_boss_name = "THE ARCHITECT"
+adaptive_focus = "Deep historical profiling"
+ambient_color = Color(0.12, 0.10, 0.08, 1.0)
+base_xp = 2000.0
+recommended_level = 32
+level_scene_path = "res://scenes/levels/BrokenMachineWorld.tscn"

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ArtifactSetData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactSetData.gd" id="1_set"]
+
+[resource]
+script = ExtResource("1_set")
+set_id = "machinist"
+set_name = "Machinist's Core"
+world_id = 5
+description = "Precision clockwork and energized dynamo components from the Great Machine."
+bonus_2_desc = "+15% Attack Speed"
+bonus_4_desc = "Shock chains to 2 extra foes"
+bonus_6_desc = "Parry shreds 30% enemy armor"
+bonus_8_desc = "Overcharge: +50% speed & 0 stamina cost"
+bonus_2_stat_type = "attack_speed_pct"
+bonus_2_stat_value = 0.15
+bonus_4_stat_type = "shock_chains"
+bonus_4_stat_value = 2.0
+bonus_6_stat_type = "parry_armor_shred_pct"
+bonus_6_stat_value = 0.30
+bonus_8_stat_type = "overcharge"
+bonus_8_stat_value = 1.0

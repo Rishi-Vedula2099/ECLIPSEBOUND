@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/WorldData.gd" id="1_world"]
+
+[resource]
+script = ExtResource("1_world")
+world_id = 2
+world_name = "The Drowned Woods"
+visual_identity = "Flooded forest, black water, fog, sunken root pathways"
+core_mechanic = "Water Depth"
+set_identity = "Drowned Oath"
+major_boss_id = "drowned_matriarch"
+major_boss_name = "Drowned Matriarch"
+adaptive_focus = "Dodge direction & distance preference"
+ambient_color = Color(0.04, 0.12, 0.16, 1.0)
+base_xp = 750.0
+recommended_level = 8
+level_scene_path = "res://scenes/levels/DrownedWoodsWorld.tscn"

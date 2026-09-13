@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/WorldData.gd" id="1_world"]
+
+[resource]
+script = ExtResource("1_world")
+world_id = 1
+world_name = "The Verdant March"
+visual_identity = "Ancient ruins, mossy stone, giant roots, moonlit forest, green fireflies"
+core_mechanic = "Living Terrain"
+set_identity = "Verdant Guardian"
+major_boss_id = "hollow_stag"
+major_boss_name = "The Hollow Stag"
+adaptive_focus = "Parry frequency & spacing counters"
+ambient_color = Color(0.08, 0.18, 0.12, 1.0)
+base_xp = 500.0
+recommended_level = 1
+level_scene_path = "res://scenes/levels/VerdantMarchWorld.tscn"

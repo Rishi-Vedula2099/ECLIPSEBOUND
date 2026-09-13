@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/WorldData.gd" id="1_world"]
+
+[resource]
+script = ExtResource("1_world")
+world_id = 4
+world_name = "The Crimson Cathedral"
+visual_identity = "Gothic cathedral, blood rivers, stained glass, soaring buttresses"
+core_mechanic = "Blood Rites"
+set_identity = "Crimson Rite"
+major_boss_id = "cardinal_of_blood"
+major_boss_name = "Cardinal of Blood"
+adaptive_focus = "Exploits heal timing & greed"
+ambient_color = Color(0.20, 0.04, 0.08, 1.0)
+base_xp = 1500.0
+recommended_level = 24
+level_scene_path = "res://scenes/levels/CrimsonCathedralWorld.tscn"

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ArtifactSetData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactSetData.gd" id="1_set"]
+
+[resource]
+script = ExtResource("1_set")
+set_id = "dream"
+set_name = "Dreamwoven"
+world_id = 6
+description = "Ethereal silk spun from impossible geometries and lucid dreams."
+bonus_2_desc = "+20% Energy Regen"
+bonus_4_desc = "Dash spawns illusionary decoy"
+bonus_6_desc = "-25% Cooldowns"
+bonus_8_desc = "Reality Rift on perfect parry"
+bonus_2_stat_type = "energy_regen_pct"
+bonus_2_stat_value = 0.20
+bonus_4_stat_type = "decoy_on_dash"
+bonus_4_stat_value = 1.0
+bonus_6_stat_type = "cooldown_reduction_pct"
+bonus_6_stat_value = 0.25
+bonus_8_stat_type = "reality_rift_parry"
+bonus_8_stat_value = 1.0

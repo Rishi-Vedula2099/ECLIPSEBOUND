@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ArtifactSetData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactSetData.gd" id="1_set"]
+
+[resource]
+script = ExtResource("1_set")
+set_id = "ashen"
+set_name = "Ashen Sovereign"
+world_id = 3
+description = "Forged in magma caldera ruins, crowned in perpetual cinder fire."
+bonus_2_desc = "+15 DEF, +20% Fire Resist"
+bonus_4_desc = "Attacks ignite with Hellfire"
+bonus_6_desc = "Molten retributive blast on hit"
+bonus_8_desc = "<50% HP grants +60% Melee Fire DMG"
+bonus_2_stat_type = "defense_and_fire_res"
+bonus_2_stat_value = 15.0
+bonus_4_stat_type = "hellfire_ignite"
+bonus_4_stat_value = 1.0
+bonus_6_stat_type = "retributive_blast"
+bonus_6_stat_value = 1.0
+bonus_8_stat_type = "low_hp_fire_dmg_pct"
+bonus_8_stat_value = 0.60

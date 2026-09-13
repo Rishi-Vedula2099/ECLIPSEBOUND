@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/WorldData.gd" id="1_world"]
+
+[resource]
+script = ExtResource("1_world")
+world_id = 3
+world_name = "The Ashen Sovereign"
+visual_identity = "Volcanic ruins, ash storms, embers, obsidian jagged cliffs"
+core_mechanic = "Heat Zones"
+set_identity = "Ashen Sovereign"
+major_boss_id = "ash_king"
+major_boss_name = "The Ash King"
+adaptive_focus = "Punishes repetitive melee pressure"
+ambient_color = Color(0.22, 0.08, 0.04, 1.0)
+base_xp = 1100.0
+recommended_level = 16
+level_scene_path = "res://scenes/levels/AshenSovereignWorld.tscn"
