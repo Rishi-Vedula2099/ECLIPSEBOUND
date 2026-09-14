@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "dream_necklace"
+artifact_name = "Dreamwoven Choker"
+slot = "Necklace"
+rarity = "Legendary"
+set_id = "Dreamwoven"
+bonus_vit = 12
+bonus_str = 2
+bonus_arc = 28
+bonus_def = 8
+bonus_agi = 16
+bonus_crt = 16
+bonus_res = 20
+bonus_lck = 12
+upgrade_level = 0
+substats = [{"stat": "arc", "value": 8}, {"stat": "crt", "value": 6}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "A luminescent choker harboring the concentrated waking dreams of fallen deities."

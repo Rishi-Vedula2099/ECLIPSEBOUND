@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "drowned_boots"
+artifact_name = "Drowned Oath Sabatons"
+slot = "Boots"
+rarity = "Rare"
+set_id = "Drowned Oath"
+bonus_vit = 8
+bonus_str = 4
+bonus_arc = 4
+bonus_def = 10
+bonus_agi = 12
+bonus_crt = 4
+bonus_res = 12
+bonus_lck = 2
+upgrade_level = 0
+substats = [{"stat": "agi", "value": 5}, {"stat": "res", "value": 4}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "Weighted sabatons calibrated to glide through underwater silt and mud without impediment."

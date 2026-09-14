@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BossData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/bosses/BossData.gd" id="1_boss"]
+
+[resource]
+script = ExtResource("1_boss")
+boss_id = "the_architect"
+boss_name = "THE ARCHITECT"
+world_id = 5
+visual_theme = "Clockwork titan, brass gear array, high-voltage galvanic capacitors"
+max_health = 3200.0
+defense = 38
+base_speed = 70.0
+charge_speed = 200.0
+xp_reward = 2000.0
+adaptive_focus = "Deep historical profiling & parry pattern counters"
+phases = ["PHASE_1_CLOCKWORK_MACHINE", "PHASE_2_OVERCLOCKED_SYSTEM"]
+attack_names = ["cogwheel_crush", "circuit_surge", "clockwork_laser", "drone_protocol"]
+scene_path = "res://scenes/bosses/TheArchitect.tscn"

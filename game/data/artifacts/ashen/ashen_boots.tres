@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "ashen_boots"
+artifact_name = "Ashen Sovereign Greaves"
+slot = "Boots"
+rarity = "Epic"
+set_id = "Ashen Sovereign"
+bonus_vit = 12
+bonus_str = 8
+bonus_arc = 0
+bonus_def = 18
+bonus_agi = 4
+bonus_crt = 2
+bonus_res = 20
+bonus_lck = 2
+upgrade_level = 0
+substats = [{"stat": "def", "value": 6}, {"stat": "res", "value": 6}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "Plated greaves forged from basalt stone that tread through magma fields without burning."

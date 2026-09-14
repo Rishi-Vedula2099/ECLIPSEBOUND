@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/EncounterData.gd" id="1_enc"]
+
+[resource]
+script = ExtResource("1_enc")
+encounter_id = "encounter_w7_null"
+world_id = 7
+encounter_name = "Singularity Kernel Crash"
+wave_count = 3
+minion_pool = ["glitch_fragment", "corrupted_echo"]
+elite_pool = ["null_inquisitor_elite"]
+max_simultaneous_enemies = 8
+base_clear_xp = 900.0
+difficulty_rating = 3.5

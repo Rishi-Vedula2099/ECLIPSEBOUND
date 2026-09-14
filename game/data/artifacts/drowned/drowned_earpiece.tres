@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "drowned_earpiece"
+artifact_name = "Drowned Oath Ear-Cuff"
+slot = "Earpiece"
+rarity = "Rare"
+set_id = "Drowned Oath"
+bonus_vit = 8
+bonus_str = 2
+bonus_arc = 10
+bonus_def = 6
+bonus_agi = 10
+bonus_crt = 4
+bonus_res = 14
+bonus_lck = 4
+upgrade_level = 0
+substats = [{"stat": "res", "value": 5}, {"stat": "agi", "value": 4}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "A shell ear-cuff filtering ambient sound into echoes of rushing tide."

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BossData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/bosses/BossData.gd" id="1_boss"]
+
+[resource]
+script = ExtResource("1_boss")
+boss_id = "the_dream_eater"
+boss_name = "The Dream Eater"
+world_id = 6
+visual_theme = "Astral chimera, shifting kaleidoscopic wings, lucid dream distortions"
+max_health = 4000.0
+defense = 34
+base_speed = 100.0
+charge_speed = 280.0
+xp_reward = 2600.0
+adaptive_focus = "Movement timing & dash cadence rhythms"
+phases = ["PHASE_1_LUCID_PHANTOM", "PHASE_2_NIGHTMARE_TERROR"]
+attack_names = ["mirage_strike", "reality_tear", "nightmare_spikes", "lucidity_collapse"]
+scene_path = "res://scenes/bosses/TheDreamEater.tscn"

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "dream_boots"
+artifact_name = "Dreamwoven Slippers"
+slot = "Boots"
+rarity = "Legendary"
+set_id = "Dreamwoven"
+bonus_vit = 12
+bonus_str = 2
+bonus_arc = 20
+bonus_def = 10
+bonus_agi = 24
+bonus_crt = 12
+bonus_res = 16
+bonus_lck = 10
+upgrade_level = 0
+substats = [{"stat": "agi", "value": 7}, {"stat": "arc", "value": 6}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "Gravity-defying footwear allowing the wearer to walk effortlessly upon dream air and inverted ceilings."

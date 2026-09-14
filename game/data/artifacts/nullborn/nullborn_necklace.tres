@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "nullborn_necklace"
+artifact_name = "Fractured Null Amulet"
+slot = "Necklace"
+rarity = "Corrupted"
+set_id = "Nullborn"
+bonus_vit = 0
+bonus_str = 18
+bonus_arc = 24
+bonus_def = 4
+bonus_agi = 14
+bonus_crt = 24
+bonus_res = 14
+bonus_lck = 18
+upgrade_level = 0
+substats = [{"stat": "arc", "value": 8}, {"stat": "crt", "value": 8}]
+is_corrupted = true
+corrupted_affix = {"boon": "attack_boost", "boon_val": 0.35, "curse": "defense_penalty", "curse_val": -0.20}
+is_locked = false
+is_favorite = false
+description = "A floating black singularity core encased in fractured obsidian cages."

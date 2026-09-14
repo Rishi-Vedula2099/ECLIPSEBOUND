@@ -358,7 +358,7 @@ class CraftingManagerPy:
 
     def transmute(self, items: list) -> ArtifactPy | None:
         if len(items) != 3 or any(it.is_locked for it in items):
-            return False
+            return None
         if self.inv.materials["transmute_catalyst"] < 1:
             return None
         self.inv.materials["transmute_catalyst"] -= 1

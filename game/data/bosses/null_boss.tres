@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BossData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/bosses/BossData.gd" id="1_boss"]
+
+[resource]
+script = ExtResource("1_boss")
+boss_id = "null_boss"
+boss_name = "NULL"
+world_id = 7
+visual_theme = "Void singularity, fractured reality shards, total eclipse avatar"
+max_health = 5000.0
+defense = 40
+base_speed = 110.0
+charge_speed = 300.0
+xp_reward = 3500.0
+adaptive_focus = "Complete campaign memory synthesis & full behavioral counters"
+phases = ["PHASE_1_VOID_SINGULARITY", "PHASE_2_CORRUPTED_KERNEL"]
+attack_names = ["glitch_strike", "memory_echo", "void_singularity", "execution_error"]
+scene_path = "res://scenes/bosses/NullBoss.tscn"

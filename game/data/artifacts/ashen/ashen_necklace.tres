@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "ashen_necklace"
+artifact_name = "Ashen Sovereign Gorget"
+slot = "Necklace"
+rarity = "Epic"
+set_id = "Ashen Sovereign"
+bonus_vit = 12
+bonus_str = 10
+bonus_arc = 4
+bonus_def = 14
+bonus_agi = 2
+bonus_crt = 4
+bonus_res = 18
+bonus_lck = 4
+upgrade_level = 0
+substats = [{"stat": "str", "value": 5}, {"stat": "res", "value": 6}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "A heavy iron neck collar glowing with the core heat of the Ashen Sovereign."

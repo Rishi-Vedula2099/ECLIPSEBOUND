@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "crimson_earpiece"
+artifact_name = "Crimson Rite Ear-Drop"
+slot = "Earpiece"
+rarity = "Legendary"
+set_id = "Crimson Rite"
+bonus_vit = 12
+bonus_str = 6
+bonus_arc = 14
+bonus_def = 6
+bonus_agi = 8
+bonus_crt = 16
+bonus_res = 12
+bonus_lck = 10
+upgrade_level = 0
+substats = [{"stat": "crt", "value": 6}, {"stat": "arc", "value": 5}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "A blood droplet-shaped earring that whispers rhythmic sacrificial incantations."

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "ashen_bracelet"
+artifact_name = "Ashen Sovereign Bracer"
+slot = "Bracelet"
+rarity = "Epic"
+set_id = "Ashen Sovereign"
+bonus_vit = 10
+bonus_str = 8
+bonus_arc = 2
+bonus_def = 16
+bonus_agi = 2
+bonus_crt = 4
+bonus_res = 16
+bonus_lck = 2
+upgrade_level = 0
+substats = [{"stat": "def", "value": 5}, {"stat": "str", "value": 4}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "A scorched obsidian band that tempers the wielder's arm against recoil and burn."

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "crimson_gloves"
+artifact_name = "Crimson Rite Claws"
+slot = "Gloves"
+rarity = "Legendary"
+set_id = "Crimson Rite"
+bonus_vit = 10
+bonus_str = 14
+bonus_arc = 10
+bonus_def = 6
+bonus_agi = 12
+bonus_crt = 20
+bonus_res = 8
+bonus_lck = 8
+upgrade_level = 0
+substats = [{"stat": "crt", "value": 7}, {"stat": "str", "value": 5}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "Serrated clawed gloves allowing deep lacerations that gorge on enemy blood."

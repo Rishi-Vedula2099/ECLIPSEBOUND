@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "nullborn_helm"
+artifact_name = "Fractured Null Mask"
+slot = "Helm"
+rarity = "Corrupted"
+set_id = "Nullborn"
+bonus_vit = 0
+bonus_str = 16
+bonus_arc = 20
+bonus_def = 6
+bonus_agi = 14
+bonus_crt = 22
+bonus_res = 12
+bonus_lck = 15
+upgrade_level = 0
+substats = [{"stat": "crt", "value": 8}, {"stat": "arc", "value": 8}]
+is_corrupted = true
+corrupted_affix = {"boon": "attack_boost", "boon_val": 0.25, "curse": "defense_penalty", "curse_val": -0.15}
+is_locked = false
+is_favorite = false
+description = "A void-fractured ceramic faceplate erasing the user's sensory limits at the cost of vulnerability."

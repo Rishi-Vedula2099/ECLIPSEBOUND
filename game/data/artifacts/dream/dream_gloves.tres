@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "dream_gloves"
+artifact_name = "Dreamwoven Mitts"
+slot = "Gloves"
+rarity = "Legendary"
+set_id = "Dreamwoven"
+bonus_vit = 10
+bonus_str = 4
+bonus_arc = 22
+bonus_def = 8
+bonus_agi = 20
+bonus_crt = 16
+bonus_res = 14
+bonus_lck = 10
+upgrade_level = 0
+substats = [{"stat": "agi", "value": 6}, {"stat": "crt", "value": 5}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "Ethereal gloves leaving radiant optical trails that disrupt enemy targeting."

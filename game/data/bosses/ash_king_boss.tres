@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BossData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/bosses/BossData.gd" id="1_boss"]
+
+[resource]
+script = ExtResource("1_boss")
+boss_id = "ash_king"
+boss_name = "The Ash King"
+world_id = 3
+visual_theme = "Volcanic sovereign, molten armor plates, pyroclastic ash halo"
+max_health = 1950.0
+defense = 32
+base_speed = 80.0
+charge_speed = 210.0
+xp_reward = 1100.0
+adaptive_focus = "Punishes repetitive melee pressure & corner trapping"
+phases = ["PHASE_1_MOLTEN_WARRIOR", "PHASE_2_VOLCANIC_TITAN"]
+attack_names = ["flame_sunder", "magma_eruption", "pyroclastic_wave", "molten_counter"]
+scene_path = "res://scenes/bosses/AshKing.tscn"

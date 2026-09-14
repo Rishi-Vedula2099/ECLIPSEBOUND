@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/EnemyData.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = "verdant_guardian_elite"
+enemy_name = "Verdant Guardian Elite"
+world_id = 1
+tier = "elite"
+max_health = 240.0
+defense = 18
+move_speed = 65.0
+chase_speed = 100.0
+xp_reward = 120.0
+max_poise = 80.0
+detection_radius = 260.0
+attack_range = 48.0
+attack_cooldown = 2.0
+attack_data_path = "res://data/attacks/enemies/elite_cleave.tres"
+scene_path = "res://scenes/enemies/VerdantGuardianElite.tscn"

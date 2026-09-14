@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "dream_bracelet"
+artifact_name = "Dreamwoven Spiral"
+slot = "Bracelet"
+rarity = "Legendary"
+set_id = "Dreamwoven"
+bonus_vit = 10
+bonus_str = 2
+bonus_arc = 22
+bonus_def = 10
+bonus_agi = 18
+bonus_crt = 14
+bonus_res = 18
+bonus_lck = 10
+upgrade_level = 0
+substats = [{"stat": "arc", "value": 6}, {"stat": "agi", "value": 5}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "A twisting spiral armlet pulsating in synch with dimensional reality shifts."

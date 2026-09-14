@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BossData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/bosses/BossData.gd" id="1_boss"]
+
+[resource]
+script = ExtResource("1_boss")
+boss_id = "hollow_stag"
+boss_name = "The Hollow Stag"
+world_id = 1
+visual_theme = "Ancient forest guardian, overgrown antlers, solar eclipse aura"
+max_health = 900.0
+defense = 20
+base_speed = 90.0
+charge_speed = 240.0
+xp_reward = 500.0
+adaptive_focus = "Parry timing & spacing punishment"
+phases = ["PHASE_1_FOREST_DEITY", "PHASE_2_CORRUPTED_ECLIPSE"]
+attack_names = ["antler_sweep", "gallop_charge", "root_eruption", "eclipse_beam"]
+scene_path = "res://scenes/bosses/HollowStag.tscn"

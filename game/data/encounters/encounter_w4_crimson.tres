@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/EncounterData.gd" id="1_enc"]
+
+[resource]
+script = ExtResource("1_enc")
+encounter_id = "encounter_w4_crimson"
+world_id = 4
+encounter_name = "Nave of Sacrilege Rites"
+wave_count = 3
+minion_pool = ["blood_cultist", "gargoyle_sanguis"]
+elite_pool = ["sanguine_executioner_elite"]
+max_simultaneous_enemies = 6
+base_clear_xp = 460.0
+difficulty_rating = 2.2

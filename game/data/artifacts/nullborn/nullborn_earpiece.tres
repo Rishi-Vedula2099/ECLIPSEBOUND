@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "nullborn_earpiece"
+artifact_name = "Fractured Null Distortion"
+slot = "Earpiece"
+rarity = "Corrupted"
+set_id = "Nullborn"
+bonus_vit = 0
+bonus_str = 14
+bonus_arc = 22
+bonus_def = 4
+bonus_agi = 18
+bonus_crt = 24
+bonus_res = 14
+bonus_lck = 18
+upgrade_level = 0
+substats = [{"stat": "crt", "value": 8}, {"stat": "lck", "value": 6}]
+is_corrupted = true
+corrupted_affix = {"boon": "attack_boost", "boon_val": 0.30, "curse": "defense_penalty", "curse_val": -0.15}
+is_locked = false
+is_favorite = false
+description = "A static audio artifact piping corrupted memory fragments directly into the brain."

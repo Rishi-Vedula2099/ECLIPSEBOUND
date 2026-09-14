@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "nullborn_armour"
+artifact_name = "Fractured Null Carapace"
+slot = "Armour"
+rarity = "Corrupted"
+set_id = "Nullborn"
+bonus_vit = 0
+bonus_str = 20
+bonus_arc = 20
+bonus_def = 10
+bonus_agi = 12
+bonus_crt = 20
+bonus_res = 14
+bonus_lck = 15
+upgrade_level = 0
+substats = [{"stat": "str", "value": 8}, {"stat": "crt", "value": 8}]
+is_corrupted = true
+corrupted_affix = {"boon": "crit_damage", "boon_val": 0.50, "curse": "max_hp_penalty", "curse_val": -0.25}
+is_locked = false
+is_favorite = false
+description = "Pitch-black armor plating flickering in and out of dimensional existence."

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BossData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/bosses/BossData.gd" id="1_boss"]
+
+[resource]
+script = ExtResource("1_boss")
+boss_id = "drowned_matriarch"
+boss_name = "Drowned Matriarch"
+world_id = 2
+visual_theme = "Flooded forest leviathan, black water tendrils, bioluminescent coral crown"
+max_health = 1400.0
+defense = 25
+base_speed = 85.0
+charge_speed = 220.0
+xp_reward = 750.0
+adaptive_focus = "Dodge direction & distance preference"
+phases = ["PHASE_1_WATER_SPIRIT", "PHASE_2_ABYSSAL_KRAKEN"]
+attack_names = ["tidal_cleave", "whirlpool", "abyssal_torrent", "depth_slam"]
+scene_path = "res://scenes/bosses/DrownedMatriarch.tscn"

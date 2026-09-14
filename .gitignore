@@ -33,3 +33,8 @@ Thumbs.db
 
 # Docker / Storage data
 infrastructure/data/
+
+# IDE local path junctions
+/app/
+/environments/
+

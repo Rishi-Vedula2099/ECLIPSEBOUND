@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/EnemyData.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = "dream_phantasm"
+enemy_name = "Dream Phantasm"
+world_id = 6
+tier = "common"
+max_health = 90.0
+defense = 14
+move_speed = 80.0
+chase_speed = 135.0
+xp_reward = 70.0
+max_poise = 25.0
+detection_radius = 220.0
+attack_range = 46.0
+attack_cooldown = 1.9
+attack_data_path = "res://data/attacks/enemies/phantasm_phase_slash.tres"
+scene_path = "res://scenes/enemies/DreamPhantasm.tscn"

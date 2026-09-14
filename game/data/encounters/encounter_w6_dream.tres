@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/EncounterData.gd" id="1_enc"]
+
+[resource]
+script = ExtResource("1_enc")
+encounter_id = "encounter_w6_dream"
+world_id = 6
+encounter_name = "Fractured Spire Hallucination"
+wave_count = 3
+minion_pool = ["dream_phantasm", "nightmare_weaver"]
+elite_pool = ["somnambulist_elite"]
+max_simultaneous_enemies = 7
+base_clear_xp = 720.0
+difficulty_rating = 3.0

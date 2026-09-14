@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "machinist_earpiece"
+artifact_name = "Machinist's Core Ear-Relay"
+slot = "Earpiece"
+rarity = "Epic"
+set_id = "Machinist's Core"
+bonus_vit = 6
+bonus_str = 6
+bonus_arc = 16
+bonus_def = 10
+bonus_agi = 12
+bonus_crt = 10
+bonus_res = 12
+bonus_lck = 8
+upgrade_level = 0
+substats = [{"stat": "arc", "value": 6}, {"stat": "crt", "value": 4}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "An acoustic headphone unit detecting gear fractures and internal machinery frequency shifts."

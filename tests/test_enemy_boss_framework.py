@@ -306,7 +306,7 @@ class CurrentFightMemoryPy:
             direction = d["data"].get("direction", "NONE")
             if direction in counts:
                 counts[direction] += 1
-        best_dir = max(counts, key=counts.get)
+        best_dir = max(counts, key=lambda k: counts[k])
         confidence = counts[best_dir] / len(dodges)
         return {"primary_direction": best_dir, "confidence": confidence}
 

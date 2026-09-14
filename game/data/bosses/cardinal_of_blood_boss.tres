@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BossData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/bosses/BossData.gd" id="1_boss"]
+
+[resource]
+script = ExtResource("1_boss")
+boss_id = "cardinal_of_blood"
+boss_name = "Cardinal of Blood"
+world_id = 4
+visual_theme = "Gothic hierarch, stained glass vestments, sanguine levitation"
+max_health = 2500.0
+defense = 28
+base_speed = 95.0
+charge_speed = 260.0
+xp_reward = 1500.0
+adaptive_focus = "Exploits heal timing & player greed"
+phases = ["PHASE_1_HERETIC_PRIEST", "PHASE_2_BLOOD_GOD_AVATAR"]
+attack_names = ["blood_spear", "sanguine_siphon", "hemorrhage_seal", "excommunication"]
+scene_path = "res://scenes/bosses/CardinalOfBlood.tscn"

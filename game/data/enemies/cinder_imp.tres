@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/EnemyData.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = "cinder_imp"
+enemy_name = "Cinder Imp"
+world_id = 3
+tier = "flying"
+max_health = 65.0
+defense = 10
+move_speed = 85.0
+chase_speed = 130.0
+xp_reward = 40.0
+max_poise = 25.0
+detection_radius = 240.0
+attack_range = 140.0
+attack_cooldown = 1.9
+attack_data_path = "res://data/attacks/enemies/cinder_fireball.tres"
+scene_path = "res://scenes/enemies/CinderImp.tscn"

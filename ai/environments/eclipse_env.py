@@ -1,4 +1,4 @@
-# ai/environments/eclipse_env.py
+# ai/environments/eclipse_env.py - RL Environment
 import numpy as np
 from typing import Dict, Any, Tuple
 
@@ -7,10 +7,11 @@ try:
     BaseEnv = gym.Env
     has_gym = True
 except ImportError:
-    BaseEnv = object
-    has_gym = False
+    import gym # type: ignore
+    BaseEnv = gym.Env # type: ignore
+    has_gym = True
 
-class EclipseBoundEnv(BaseEnv):
+class EclipseBoundEnv(BaseEnv): # type: ignore
     """
     Gymnasium environment interface for ECLIPSEBOUND combat simulation.
     State Observation Vector (12 features):
@@ -51,7 +52,7 @@ class EclipseBoundEnv(BaseEnv):
         self.seed_val = seed
         self.reset(seed=seed)
 
-    def reset(self, seed: int = None, options: Dict[str, Any] = None) -> Tuple[np.ndarray, Dict[str, Any]]:
+    def reset(self, seed: int | None = None, options: Dict[str, Any] | None = None) -> Tuple[np.ndarray, Dict[str, Any]]:
         if has_gym and seed is not None:
             super().reset(seed=seed)
         self.player_hp = 100.0

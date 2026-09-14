@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "nullborn_gloves"
+artifact_name = "Fractured Null Grips"
+slot = "Gloves"
+rarity = "Corrupted"
+set_id = "Nullborn"
+bonus_vit = 0
+bonus_str = 22
+bonus_arc = 16
+bonus_def = 4
+bonus_agi = 16
+bonus_crt = 26
+bonus_res = 10
+bonus_lck = 15
+upgrade_level = 0
+substats = [{"stat": "crt", "value": 10}, {"stat": "agi", "value": 6}]
+is_corrupted = true
+corrupted_affix = {"boon": "attack_boost", "boon_val": 0.30, "curse": "defense_penalty", "curse_val": -0.20}
+is_locked = false
+is_favorite = false
+description = "Glitched void gauntlets that rip open dimensional seams upon weapon impact."

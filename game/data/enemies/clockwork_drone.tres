@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/EnemyData.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = "clockwork_drone"
+enemy_name = "Clockwork Drone"
+world_id = 5
+tier = "flying"
+max_health = 80.0
+defense = 16
+move_speed = 70.0
+chase_speed = 110.0
+xp_reward = 60.0
+max_poise = 30.0
+detection_radius = 210.0
+attack_range = 100.0
+attack_cooldown = 1.8
+attack_data_path = "res://data/attacks/enemies/drone_zap.tres"
+scene_path = "res://scenes/enemies/ClockworkDrone.tscn"

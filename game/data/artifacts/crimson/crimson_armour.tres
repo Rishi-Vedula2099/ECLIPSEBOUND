@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "crimson_armour"
+artifact_name = "Crimson Rite Vestment"
+slot = "Armour"
+rarity = "Legendary"
+set_id = "Crimson Rite"
+bonus_vit = 18
+bonus_str = 10
+bonus_arc = 14
+bonus_def = 14
+bonus_agi = 6
+bonus_crt = 12
+bonus_res = 14
+bonus_lck = 8
+upgrade_level = 0
+substats = [{"stat": "vit", "value": 6}, {"stat": "crt", "value": 5}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "Heavy velvet robes soaked in consecrated blood, converting damage into sanguine frenzy."

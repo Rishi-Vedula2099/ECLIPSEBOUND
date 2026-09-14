@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "dream_armour"
+artifact_name = "Dreamwoven Shroud"
+slot = "Armour"
+rarity = "Legendary"
+set_id = "Dreamwoven"
+bonus_vit = 16
+bonus_str = 2
+bonus_arc = 26
+bonus_def = 14
+bonus_agi = 18
+bonus_crt = 10
+bonus_res = 24
+bonus_lck = 8
+upgrade_level = 0
+substats = [{"stat": "arc", "value": 8}, {"stat": "res", "value": 6}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "A robe woven from impossible starlight threads that phases between reality and nightmare."

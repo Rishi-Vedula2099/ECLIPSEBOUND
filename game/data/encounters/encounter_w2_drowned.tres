@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EncounterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/EncounterData.gd" id="1_enc"]
+
+[resource]
+script = ExtResource("1_enc")
+encounter_id = "encounter_w2_drowned"
+world_id = 2
+encounter_name = "Black Water Trench Patrol"
+wave_count = 3
+minion_pool = ["drowned_lurker", "abyssal_eel"]
+elite_pool = ["bog_hag_elite"]
+max_simultaneous_enemies = 5
+base_clear_xp = 260.0
+difficulty_rating = 1.4

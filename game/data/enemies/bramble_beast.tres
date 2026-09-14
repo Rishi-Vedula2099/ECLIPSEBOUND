@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/EnemyData.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = "bramble_beast"
+enemy_name = "Bramble Beast"
+world_id = 1
+tier = "bruiser"
+max_health = 75.0
+defense = 10
+move_speed = 70.0
+chase_speed = 120.0
+xp_reward = 35.0
+max_poise = 35.0
+detection_radius = 200.0
+attack_range = 42.0
+attack_cooldown = 2.2
+attack_data_path = "res://data/attacks/enemies/beast_pounce.tres"
+scene_path = "res://scenes/enemies/BrambleBeast.tscn"

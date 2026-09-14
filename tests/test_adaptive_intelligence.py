@@ -1,3 +1,4 @@
+# tests/test_adaptive_intelligence.py
 """
 Unit tests for ECLIPSEBOUND Phase 5 — Adaptive Game Intelligence & Fairness Engine.
 Validates Player Behavioral Fingerprint (EWMA & Bayesian confidence), 6 Signal Categories,
@@ -73,7 +74,7 @@ class BehavioralFingerprintPy:
             direction = "RIGHT"
         self.dodge_counts[direction] += 1
         total = sum(self.dodge_counts.values())
-        best_dir = max(self.dodge_counts, key=self.dodge_counts.get)
+        best_dir = max(self.dodge_counts, key=lambda k: self.dodge_counts[k])
         self.dodge_direction_bias = best_dir
         # Bayesian prior with K=3
         self.dodge_direction_confidence = (self.dodge_counts[best_dir] + 1) / (total + 3)

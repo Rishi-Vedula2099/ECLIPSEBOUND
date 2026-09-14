@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/AttackData.gd" id="1_att"]
+
+[resource]
+script = ExtResource("1_att")
+attack_name = "Abyssal Shock"
+damage = 22.0
+stamina_cost = 0.0
+startup_time = 0.36
+active_time = 0.15
+recovery_time = 0.35
+knockback_force = Vector2(120, -50)
+element = "Lightning"
+status_effect = "Stun"
+status_duration = 0.8
+status_potency = 1.0
+can_be_parried = true
+breaks_guard = false
+screen_shake_intensity = 0.20

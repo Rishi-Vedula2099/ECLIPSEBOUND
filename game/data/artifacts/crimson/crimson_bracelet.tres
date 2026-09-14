@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "crimson_bracelet"
+artifact_name = "Crimson Rite Rosary"
+slot = "Bracelet"
+rarity = "Legendary"
+set_id = "Crimson Rite"
+bonus_vit = 12
+bonus_str = 8
+bonus_arc = 12
+bonus_def = 6
+bonus_agi = 8
+bonus_crt = 14
+bonus_res = 12
+bonus_lck = 10
+upgrade_level = 0
+substats = [{"stat": "lck", "value": 5}, {"stat": "crt", "value": 5}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "A wrist rosary carved from dried bloodstones, pulsing with dark communion."

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/AttackData.gd" id="1_att"]
+
+[resource]
+script = ExtResource("1_att")
+attack_name = "Lurker Ambush"
+damage = 28.0
+stamina_cost = 0.0
+startup_time = 0.40
+active_time = 0.18
+recovery_time = 0.45
+knockback_force = Vector2(160, -80)
+element = "Water"
+status_effect = "Slow"
+status_duration = 2.5
+status_potency = 0.30
+can_be_parried = true
+breaks_guard = false
+screen_shake_intensity = 0.25

@@ -418,3 +418,150 @@ def test_world_level_scaling_math():
     assert math.isclose(dmg_mult(7), 3.10)
     assert math.isclose(xp_mult(7), 4.00)
     assert math.isclose(loot_mult(7), 2.80)
+
+
+# ============================================================================
+# 4. Phase 6 Complete Content & File Integrity Tests
+# ============================================================================
+
+def test_all_fifty_six_artifact_pieces_exist_and_are_valid():
+    """Verify all 7 sets have complete 8-piece sets (Helm, Armour, Gloves, Boots, Necklace, Bracelet, Ring, Earpiece)."""
+    sets_map = {
+        "verdant": ("Verdant Guardian", "verdant"),
+        "drowned": ("Drowned Oath", "drowned"),
+        "ashen": ("Ashen Sovereign", "ashen"),
+        "crimson": ("Crimson Rite", "crimson"),
+        "machinist": ("Machinist's Core", "machinist"),
+        "dream": ("Dreamwoven", "dream"),
+        "nullborn": ("Nullborn", "nullborn"),
+    }
+    slots = ["helm", "armour", "gloves", "boots", "necklace", "bracelet", "ring", "earpiece"]
+
+    total_count = 0
+    artifacts_dir = os.path.join(GAME_DIR, "data", "artifacts")
+    for folder, (set_name, prefix) in sets_map.items():
+        sub_dir = os.path.join(artifacts_dir, folder)
+        assert os.path.isdir(sub_dir), f"Missing artifact directory: {sub_dir}"
+        for slot in slots:
+            fname = f"{prefix}_{slot}.tres"
+            fpath = os.path.join(sub_dir, fname)
+            assert os.path.isfile(fpath), f"Missing artifact file: {fpath}"
+            with open(fpath, "r", encoding="utf-8") as f:
+                content = f.read()
+                assert 'script_class="ArtifactData"' in content
+                assert f'set_id = "{set_name}"' in content or f'set_id = "{prefix}"' in content
+                assert "bonus_vit =" in content
+                assert "bonus_str =" in content
+                assert "description =" in content
+            total_count += 1
+
+    assert total_count == 56, f"Expected 56 artifact files, found {total_count}"
+
+
+def test_all_seven_boss_data_resources_exist():
+    """Verify structured BossData resources for Worlds 1 through 7 in game/data/bosses/."""
+    expected_bosses = [
+        "hollow_stag_boss.tres",
+        "drowned_matriarch_boss.tres",
+        "ash_king_boss.tres",
+        "cardinal_of_blood_boss.tres",
+        "the_architect_boss.tres",
+        "the_dream_eater_boss.tres",
+        "null_boss.tres",
+    ]
+    boss_dir = os.path.join(GAME_DIR, "data", "bosses")
+    assert os.path.isdir(boss_dir)
+    for b_file in expected_bosses:
+        path = os.path.join(boss_dir, b_file)
+        assert os.path.isfile(path), f"Missing boss data resource: {b_file}"
+        with open(path, "r", encoding="utf-8") as f:
+            c = f.read()
+            assert 'script_class="BossData"' in c
+            assert "boss_id =" in c
+            assert "max_health =" in c
+            assert "adaptive_focus =" in c
+            assert "phases =" in c
+
+
+def test_all_seven_world_encounters_exist():
+    """Verify EncounterData resources for Worlds 1 through 7 in game/data/encounters/."""
+    expected_encounters = [
+        "encounter_w1_verdant.tres",
+        "encounter_w2_drowned.tres",
+        "encounter_w3_ashen.tres",
+        "encounter_w4_crimson.tres",
+        "encounter_w5_machinist.tres",
+        "encounter_w6_dream.tres",
+        "encounter_w7_null.tres",
+    ]
+    enc_dir = os.path.join(GAME_DIR, "data", "encounters")
+    assert os.path.isdir(enc_dir)
+    for enc_file in expected_encounters:
+        path = os.path.join(enc_dir, enc_file)
+        assert os.path.isfile(path), f"Missing encounter resource: {enc_file}"
+        with open(path, "r", encoding="utf-8") as f:
+            c = f.read()
+            assert 'script_class="EncounterData"' in c
+            assert "minion_pool =" in c
+            assert "wave_count =" in c
+
+
+def test_all_enemy_attacks_meet_350ms_telegraph_rule():
+    """Verify all enemy attacks meet the 350ms minimum startup fairness rule."""
+    att_dir = os.path.join(GAME_DIR, "data", "attacks", "enemies")
+    assert os.path.isdir(att_dir)
+    files = [f for f in os.listdir(att_dir) if f.endswith(".tres")]
+    assert len(files) >= 15, f"Expected at least 15 enemy attacks, found {len(files)}"
+
+    for f_name in files:
+        path = os.path.join(att_dir, f_name)
+        with open(path, "r", encoding="utf-8") as f:
+            c = f.read()
+        match = re.search(r"startup_time\s*=\s*([0-9\.]+)", c)
+        assert match is not None, f"Attack {f_name} missing startup_time"
+        startup = float(match.group(1))
+        assert startup >= 0.35, f"Attack {f_name} violates 350ms rule: {startup}s"
+
+
+def test_campaign_backend_api_endpoints():
+    """Test FastAPI campaign endpoints for Worlds 1-7, sets, and bosses."""
+    from fastapi.testclient import TestClient
+    import sys
+    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "backend")))
+    from app.main import app
+
+    client = TestClient(app)
+
+    # 1. Worlds endpoint
+    res_w = client.get("/campaign/worlds")
+    assert res_w.status_code == 200
+    data_w = res_w.json()
+    assert data_w["count"] == 7
+    assert len(data_w["worlds"]) == 7
+
+    # 2. Specific World 2 & World 7 checks
+    res_w2 = client.get("/campaign/worlds/2")
+    assert res_w2.status_code == 200
+    assert res_w2.json()["name"] == "The Drowned Woods"
+    assert res_w2.json()["core_mechanic"] == "Water Depth"
+    assert res_w2.json()["major_boss"] == "Drowned Matriarch"
+
+    res_w7 = client.get("/campaign/worlds/7")
+    assert res_w7.status_code == 200
+    assert res_w7.json()["name"] == "The NULL Realm"
+    assert res_w7.json()["core_mechanic"] == "Rule Failure"
+
+    # 3. Sets endpoint
+    res_s = client.get("/campaign/sets")
+    assert res_s.status_code == 200
+    data_s = res_s.json()
+    assert data_s["count"] == 7
+    assert len(data_s["sets"]) == 7
+
+    # 4. Bosses endpoint
+    res_b = client.get("/campaign/bosses")
+    assert res_b.status_code == 200
+    data_b = res_b.json()
+    assert data_b["count"] == 7
+    assert any(b["boss_name"] == "THE ARCHITECT" for b in data_b["bosses"])
+

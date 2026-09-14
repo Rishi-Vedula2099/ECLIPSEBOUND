@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "nullborn_bracelet"
+artifact_name = "Fractured Null Shackle"
+slot = "Bracelet"
+rarity = "Corrupted"
+set_id = "Nullborn"
+bonus_vit = 0
+bonus_str = 16
+bonus_arc = 20
+bonus_def = 6
+bonus_agi = 16
+bonus_crt = 22
+bonus_res = 12
+bonus_lck = 15
+upgrade_level = 0
+substats = [{"stat": "str", "value": 7}, {"stat": "crt", "value": 7}]
+is_corrupted = true
+corrupted_affix = {"boon": "crit_damage", "boon_val": 0.40, "curse": "max_hp_penalty", "curse_val": -0.15}
+is_locked = false
+is_favorite = false
+description = "A broken dimensional shackle whose containment runes have glitched permanently."

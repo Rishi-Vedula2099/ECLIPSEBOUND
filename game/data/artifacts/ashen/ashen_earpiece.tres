@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ArtifactData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/artifacts/ArtifactData.gd" id="1_art"]
+
+[resource]
+script = ExtResource("1_art")
+artifact_id = "ashen_earpiece"
+artifact_name = "Ashen Sovereign Ear-Spike"
+slot = "Earpiece"
+rarity = "Epic"
+set_id = "Ashen Sovereign"
+bonus_vit = 10
+bonus_str = 8
+bonus_arc = 2
+bonus_def = 16
+bonus_agi = 4
+bonus_crt = 4
+bonus_res = 18
+bonus_lck = 2
+upgrade_level = 0
+substats = [{"stat": "res", "value": 6}, {"stat": "def", "value": 5}]
+is_corrupted = false
+corrupted_affix = {}
+is_locked = false
+is_favorite = false
+description = "A spiked basalt ear ornament that hums with thermal energy in high heat zones."

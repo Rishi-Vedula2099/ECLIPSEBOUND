@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/EnemyData.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = "glitch_fragment"
+enemy_name = "Glitch Fragment"
+world_id = 7
+tier = "common"
+max_health = 130.0
+defense = 18
+move_speed = 90.0
+chase_speed = 150.0
+xp_reward = 90.0
+max_poise = 30.0
+detection_radius = 250.0
+attack_range = 48.0
+attack_cooldown = 1.7
+attack_data_path = "res://data/attacks/enemies/glitch_burst.tres"
+scene_path = "res://scenes/enemies/GlitchFragment.tscn"

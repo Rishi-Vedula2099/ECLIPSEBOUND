@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/AttackData.gd" id="1_att"]
+
+[resource]
+script = ExtResource("1_att")
+attack_name = "Drone Zap"
+damage = 30.0
+stamina_cost = 0.0
+startup_time = 0.38
+active_time = 0.16
+recovery_time = 0.40
+knockback_force = Vector2(100, -30)
+element = "Lightning"
+status_effect = "Shock"
+status_duration = 2.0
+status_potency = 4.0
+can_be_parried = true
+breaks_guard = false
+screen_shake_intensity = 0.20

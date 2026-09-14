@@ -288,4 +288,48 @@ def test_phase6_campaign_expansion_files_exist():
         path = os.path.join(GAME_DIR, "data", "attacks", "boss", ba)
         assert os.path.isfile(path), f"Missing boss attack resource: {ba}"
 
+    # Boss Data Resources
+    boss_data_files = [
+        "hollow_stag_boss.tres",
+        "drowned_matriarch_boss.tres",
+        "ash_king_boss.tres",
+        "cardinal_of_blood_boss.tres",
+        "the_architect_boss.tres",
+        "the_dream_eater_boss.tres",
+        "null_boss.tres",
+    ]
+    for bd in boss_data_files:
+        path = os.path.join(GAME_DIR, "data", "bosses", bd)
+        assert os.path.isfile(path), f"Missing boss data resource: {bd}"
+
+    # World Encounters
+    encounter_files = [
+        "encounter_w1_verdant.tres",
+        "encounter_w2_drowned.tres",
+        "encounter_w3_ashen.tres",
+        "encounter_w4_crimson.tres",
+        "encounter_w5_machinist.tres",
+        "encounter_w6_dream.tres",
+        "encounter_w7_null.tres",
+    ]
+    for ef in encounter_files:
+        path = os.path.join(GAME_DIR, "data", "encounters", ef)
+        assert os.path.isfile(path), f"Missing encounter resource: {ef}"
+
+    # World Enemies (Scripts & Scenes)
+    world_enemies = [
+        "DrownedLurker",
+        "CinderImp",
+        "BloodCultist",
+        "ClockworkDrone",
+        "DreamPhantasm",
+        "GlitchFragment",
+    ]
+    for enemy in world_enemies:
+        script_path = os.path.join(GAME_DIR, "scripts", "enemies", f"{enemy}.gd")
+        scene_path = os.path.join(GAME_DIR, "scenes", "enemies", f"{enemy}.tscn")
+        assert os.path.isfile(script_path), f"Missing enemy script: {enemy}.gd"
+        assert os.path.isfile(scene_path), f"Missing enemy scene: {enemy}.tscn"
+
+
 
